@@ -8,7 +8,9 @@
 
 package com.prototest.jgolem.framework;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,6 +19,8 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.events.WebDriverEventListener;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -45,12 +49,12 @@ public class WebDriverBrowser {
                 driver = startFirefoxBrowser();
                 break;
         }
-
         driver.manage().deleteAllCookies();
-        // var eDriver = new EventedWebDriver(driver);  // for logging events
-        // return eDriver.driver;
-        return driver;
+         EventFiringWebDriver eDriver = new EventFiringWebDriver(driver);
+        return WebDriverEvents.RegisterEvents(eDriver);
     }
+
+
 
     public DesiredCapabilities GetCapabilitiesForBrowser(Browser browser)
     {

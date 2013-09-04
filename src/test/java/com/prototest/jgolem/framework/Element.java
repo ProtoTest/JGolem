@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class Element {
+public class Element implements WebElement{
     private By by;
     private WebDriver driver;
     private String name;
@@ -73,6 +73,18 @@ public class Element {
         return "";
     }
 
+    @Override
+    public boolean isSelected() {
+        if (element.isSelected()) return true;
+        else return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        if (element.isEnabled()) return true;
+        else return false;
+    }
+
     public String getCssValue(String css) {
         return element.getCssValue(css);
     }
@@ -96,6 +108,12 @@ public class Element {
         return element.findElement(by);
     }
 
+    @Override
+    public boolean isDisplayed() {
+        if (element.isDisplayed()) return true;
+        else return false;
+    }
+
     public List<WebElement> findElements(By by) {
         return element.findElements(by);
     }
@@ -112,14 +130,16 @@ public class Element {
         element.submit();
     }
 
+    @Override
+    public void sendKeys(CharSequence... charSequences) {
+        sendKeys(charSequences.toString());
+    }
+
     public void sendKeys(String text) {
         waitUntilVisible();
         element.sendKeys(text);
     }
 
-
-    /* TODO */
-    // TODO
     public Element waitUntilVisible() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
