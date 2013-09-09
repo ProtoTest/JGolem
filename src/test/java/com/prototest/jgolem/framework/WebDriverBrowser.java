@@ -26,12 +26,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverBrowser {
-    public enum Browser {Firefox, Chrome, IE, Safari, Android, Iphone}
+    public enum Browser {Firefox, Chrome, IE, Safari, Android, Iphone};
     private WebDriver driver;
-
-    public static Browser getBrowserFromString(String browser_str) {
-        return Browser.valueOf(browser_str);
-    }
 
     public WebDriver launchBrowser(Browser browser) {
         switch(browser) {
