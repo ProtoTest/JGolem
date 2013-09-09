@@ -111,7 +111,7 @@ public class WebDriverBrowser {
 
     private WebDriver startChromeBrowser() {
         ChromeOptions options = new ChromeOptions();
-        System.setProperty("webdriver.chrome.driver", "/Users/rizza/bin/chromedriver");
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/chromedriver");
         return new ChromeDriver();
     }
 
