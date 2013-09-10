@@ -11,7 +11,7 @@
         <module>jgolem-core</module>
         <module>tests-google</module>
         <module>pageobjects-google</module>
-        <module>appium</module>
+        <module>appium-core</module>
         <module>screenobjects-happy</module>
         <module>tests-happy</module>
     </modules>
