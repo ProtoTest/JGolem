@@ -41,4 +41,11 @@ public class appiumTestBase {
     public static WebDriver getDriver(){
         return driver;
     }
+
+
+
+    @AfterTest
+    private void TearDown(){
+        driver.quit();
+    }
 }

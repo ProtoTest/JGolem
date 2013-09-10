@@ -1,4 +1,4 @@
-package com.prototest.happy;
+package com.prototest.Happy_Tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -11,9 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.net.URL;
-import com.prototest.jgolem.framework.Element;
 
 
 /**
@@ -21,7 +19,7 @@ import com.prototest.jgolem.framework.Element;
  * User: Seth
  * Date: 9/9/13
  * Time: 9:02 AM
- * Testing to see if I can remotely connect to macbook from windows box and find happy buttons
+ * Testing to see if I can remotely connect to macbook from windows box and find Happy_Tests buttons
  * using the pre-existing Jgolem package
  */
 public class PreliminaryTest {
