@@ -35,7 +35,7 @@ public class appiumTestBase {
         capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
         //capabilities.setCapability("app", app.getAbsolutePath());
 
-        driver = new RemoteWebDriver(new URL("http://192.168.1.101:4723/wd/hub"), capabilities);
+        driver = new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
     }
 
     public static WebDriver getDriver(){

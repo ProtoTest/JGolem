@@ -9,6 +9,9 @@ package com.prototest.appium;
  */
 import org.openqa.selenium.*;
 import org.openqa.selenium.lift.TestContext;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class appElement {
     private By by;
@@ -50,5 +53,27 @@ public class appElement {
         }
         return exists;
 
+    }
+
+    public void AcceptAlert(){
+        driver.switchTo().alert().accept();
+
+    }
+
+    public void Swipe() throws Exception{
+        setAppElement();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        HashMap<String, Double> swipeObject = new HashMap<String, Double>();
+
+        //swipeObject.put("touchCount", 1);
+        swipeObject.put("startX", 0.95);
+        swipeObject.put("startY", 0.5);
+        swipeObject.put("endX", 0.05);
+        swipeObject.put("endY", 0.5);
+        swipeObject.put("duration", 1.8);
+        //swipeObject.put("element", element);
+
+        js.executeScript("mobile: swipe", swipeObject);
     }
 }
