@@ -22,7 +22,7 @@ public class Makr_MenuBar_HeaderScreen {
     appElement ProjectsButton = new appElement("Project Archive", By.name("wmbMyProjectButton normal"));
     appElement BlogButton = new appElement("Blog", By.name("wmbBlogButton normal"));
     appElement ShoppingCartButton = new appElement("ShoppingCart_Button", By.name("wmbCartButton normal"));
-    appElement BetaFeedBack = new appElement("BetaFeedBack", By.name("wmbBetafeedbackButton"));
+    appElement BetaFeedBack = new appElement("BetaFeedBack", By.name("wmbBetafeedbackButton normal"));
     appElement PlusButton = new appElement("PlusButton", By.name("wmbPlusButton normal"));
 
     List<appElement> MenuBarElements;

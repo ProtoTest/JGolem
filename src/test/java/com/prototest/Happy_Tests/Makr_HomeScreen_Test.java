@@ -14,6 +14,6 @@ import org.testng.annotations.Test;
 public class Makr_HomeScreen_Test extends appiumTestBase {
     @Test
     public void foo(){
-        Makr_Home_Screen.StartMaker().ClickButton();
+        Makr_Home_Screen.StartMaker().VerifyContent().ClickButton();
     }
 }

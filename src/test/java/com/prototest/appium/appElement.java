@@ -20,15 +20,26 @@ public class appElement {
         this.name = n;
         this.by = b;
         this.driver = appiumTestBase.getDriver();
-        this.element = driver.findElement(b);
+        //this.element = driver.findElement(b);
     }
 
+    public WebElement getAppElement(){
+        return element;
+    }
+
+    public void setAppElement(){
+        element = driver.findElement(by);
+    }
+
+
+
     public void tap(){
+        setAppElement();
         element.click();
     }
 
     public boolean verifyPresent(){
-
+        setAppElement();
         boolean exists;
         if(driver.findElements(this.by).size() != 0)
         {
