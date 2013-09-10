@@ -4,30 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>prototest.com</groupId>
-    <artifactId>GolemMaven</artifactId>
+    <groupId>com.prototest.jgolem</groupId>
+    <artifactId>jgolem-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>jgolem-core</module>
+        <module>tests-google</module>
+        <module>pageobjects-google</module>
+        <module>appium</module>
+        <module>screenobjects-happy</module>
+        <module>tests-happy</module>
+    </modules>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>2.34.0</version>
-        </dependency>
-
-        <!-- Configuration Settings -->
-        <dependency>
-            <groupId>commons-configuration</groupId>
-            <artifactId>commons-configuration</artifactId>
-            <version>1.7</version>
-        </dependency>
-
-        <!-- Testing libraries -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.8.5</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <name>JGolem</name>
+    <description>A mavenised Selenium 2 (WebDriver) test framework</description>
 </project>
