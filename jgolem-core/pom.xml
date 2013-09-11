@@ -12,10 +12,7 @@
 
     <artifactId>jgolem-core</artifactId>
     <name>JGolem Core</name>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

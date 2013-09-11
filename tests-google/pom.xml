@@ -11,6 +11,7 @@
 
     <artifactId>tests-google</artifactId>
     <name>Google Tests</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -26,5 +27,13 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>

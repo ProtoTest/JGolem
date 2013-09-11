@@ -19,4 +19,8 @@
 
     <name>JGolem</name>
     <description>A mavenised Selenium 2 (WebDriver) test framework</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 </project>

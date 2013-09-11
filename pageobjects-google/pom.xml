@@ -11,6 +11,7 @@
 
     <artifactId>pageobjects-google</artifactId>
     <name>Google Page Objects</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

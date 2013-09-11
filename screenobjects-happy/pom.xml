@@ -11,6 +11,7 @@
 
     <artifactId>screenobjects-happy</artifactId>
     <name>Happy Screen Objects</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
