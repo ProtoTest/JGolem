@@ -7,14 +7,14 @@ package com.prototest.appium;
  * Time: 5:45 PM
  * This class should be present on almost all screens
  */
-import com.prototest.appium.appElement;
+import com.prototest.appiumcore.*;
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Makr_MenuBar_HeaderScreen {
+public class Makr_MenuBar_HeaderScreen extends appiumScreenBase {
 
     appElement MenuButton = new appElement("Menu", By.name("wmbHomeButton normal"));
     appElement WelcomeText = new appElement("WelcomeText", By.xpath("//window[1]/text[1]")); //hopefully there's a way to get this value
@@ -55,6 +55,7 @@ public class Makr_MenuBar_HeaderScreen {
                 }
             }
         }
+
     }
 
 

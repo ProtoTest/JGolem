@@ -1,4 +1,4 @@
-package com.prototest.appium;
+package com.prototest.appiumcore;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,6 +8,7 @@ package com.prototest.appium;
  * TestBase Class for appium Tests
  */
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -19,7 +20,7 @@ import java.net.URL;
 
 public class appiumTestBase {
     private static  WebDriver driver;
-    //private static appiumConfig config = null;
+    private appElement window;
 
     @BeforeTest
     public void setUp() throws Exception {
@@ -36,6 +37,7 @@ public class appiumTestBase {
         //capabilities.setCapability("app", app.getAbsolutePath());
 
         driver = new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
+        window = new appElement("Main_Window", By.xpath("//window[1]"));
     }
 
     public static WebDriver getDriver(){
