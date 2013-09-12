@@ -1,5 +1,7 @@
 package com.prototest.jgolem;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,10 +19,9 @@ import java.net.URL;
 public class WebDriverBrowser {
     public enum Browser {Firefox, Chrome, IE, Safari, Android, Iphone};
     private WebDriver driver;
+    private static Logger Log = LogManager.getLogger(WebDriverBrowser.class.getName());
 
     public WebDriver launchBrowser(Browser browser) {
-        System.out.println("launchBrowser: browser = " + browser.toString());
-
         switch(browser) {
             case Chrome:
                 driver = startChromeBrowser();
@@ -36,6 +37,8 @@ public class WebDriverBrowser {
                 driver = startFirefoxBrowser();
                 break;
         }
+
+        Log.debug("launchBrowser(): Using browser = " + browser.toString());
         driver.manage().deleteAllCookies();
          EventFiringWebDriver eDriver = new EventFiringWebDriver(driver);
         return WebDriverEvents.RegisterEvents(eDriver);
@@ -68,8 +71,7 @@ public class WebDriverBrowser {
             URL remoteAddress = new URL("http://"+ host +":4444/wd/hub");
             //return new EventedWebDriver(new RemoteWebDriver(remoteAddress, desiredCapabilities)).driver;
         } catch (MalformedURLException e) {
-            System.out.println(e.toString());
-            e.printStackTrace();
+            Log.error(e.getMessage());
         }
         return null;
     }
