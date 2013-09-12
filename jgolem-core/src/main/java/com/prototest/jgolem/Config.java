@@ -3,12 +3,13 @@ package com.prototest.jgolem;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.openqa.selenium.NoSuchElementException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
 /**
- * Config (Configuration settings) class. Used to load up framework and test specific configuration
+ * Config (Configuration settings) class. Used to load up jgolem and test specific configuration
  *  values from a file. Uses apache-commons library to facilitate property management.
  *
  *  Example usage: Config.Settings.RuntimeSettings.launchBrowser
@@ -18,13 +19,15 @@ import java.util.ArrayList;
 public final class Config {
     private static Configuration config;
     private static final String CONFIG_FILE_NAME = "Test.properties";
+    private static Logger Log = LogManager.getLogger(Config.class.getName());
 
     // static constructor
     static {
         try {
+            Log.info("Loading test configuration file: " + CONFIG_FILE_NAME);
             config = new PropertiesConfiguration(CONFIG_FILE_NAME);
         } catch (ConfigurationException e) {
-            System.out.println("Caught ConfigurationException in: " + e.getClass().getName() + ": " + e.getMessage());
+            Log.error("Caught ConfigurationException in: " + e.getClass().getName() + ": " + e.getMessage());
         }
     }
 
@@ -72,7 +75,7 @@ public final class Config {
     }
 
     /**
-     * Settings class: Wraps all of the test and framework configuration settings
+     * Settings class: Wraps all of the test and jgolem configuration settings
      */
     public static class Settings {
 
@@ -102,9 +105,9 @@ public final class Config {
                     runOnRemoteHost = Config.getConfigValue("RunOnRemoteHost", false);
                     hostIP = Config.getConfigValue("HostIp", "localhost");
                 } catch (NullPointerException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 }
             }
 
@@ -144,9 +147,9 @@ public final class Config {
                     actionLogging = Config.getConfigValue("ActionLogging", true);
                     spellChecking = Config.getConfigValue("SpellChecking", true);
                 } catch (NullPointerException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 }
             }
         }
@@ -164,9 +167,9 @@ public final class Config {
                     proxyPort = Config.getConfigValue("ProxyPort", 8876);
                     sslProxyPort = Config.getConfigValue("SSLProxyPort", 7777);
                 } catch (NullPointerException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 }
             }
         }
@@ -183,9 +186,9 @@ public final class Config {
                     localPort = Config.getConfigValue("ProxyPort", 8888);
                     localHost = Config.getConfigValue("HostIP", "localhost");
                 } catch (NullPointerException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 }
             }
         }
@@ -206,9 +209,9 @@ public final class Config {
                     activity = Config.getConfigValue("AppActivity", "");
                     appOS = Config.getConfigValue("AppOS", "Android");
                 } catch (NullPointerException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
+                    Log.error(e.getMessage());
                 }
             }
         }
