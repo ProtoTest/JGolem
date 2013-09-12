@@ -1,7 +1,7 @@
 package com.prototest.appium;
 
-import com.prototest.appium.Makr_Home_Screen;
-import com.prototest.appium.appiumTestBase;
+import com.prototest.appiumcore.*;
+
 import org.testng.annotations.Test;
 
 /**
@@ -14,6 +14,8 @@ import org.testng.annotations.Test;
 public class Makr_HomeScreen_Test extends appiumTestBase {
     @Test
     public void foo(){
+
         Makr_Home_Screen.StartMaker().VerifyContent().SwipeView().ClickButton();
+
     }
 }

@@ -1,4 +1,4 @@
-package com.prototest.appium;
+package com.prototest.appiumcore;
 
 import org.openqa.selenium.remote.*;
 /**

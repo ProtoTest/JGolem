@@ -8,8 +8,7 @@ package com.prototest.appium;
  * Maker Home screen
  */
 
-import com.prototest.appium.appElement;
-import com.prototest.appium.appiumTestBase;
+import com.prototest.appiumcore.*;
 import org.openqa.selenium.By;
 
 
@@ -40,14 +39,14 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
         return new Makr_Home_Screen();
     }
 
-    public Makr_Home_Screen SwipeView(){
-        try {
-            ScrollView.Swipe();
-            ScrollView.Swipe();
-            ScrollView.Swipe();
-        } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+    public Makr_Home_Screen SwipeView() {
+
+
+
+
+        AppMainWindow.ScrollUp();
+        AppMainWindow.ScrollDown();
+
         return new Makr_Home_Screen();
     }
 }

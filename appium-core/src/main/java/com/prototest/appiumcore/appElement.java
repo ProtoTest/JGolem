@@ -1,4 +1,4 @@
-package com.prototest.appium;
+package com.prototest.appiumcore;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,8 +8,7 @@ package com.prototest.appium;
  * Elements for appium
  */
 import org.openqa.selenium.*;
-import org.openqa.selenium.lift.TestContext;
-import org.json.JSONObject;
+
 
 import java.util.HashMap;
 
@@ -19,10 +18,12 @@ public class appElement {
     private String name;
     private WebElement element;
 
+
     public appElement(String n, By b){
         this.name = n;
         this.by = b;
         this.driver = appiumTestBase.getDriver();
+
         //this.element = driver.findElement(b);
     }
 
@@ -60,20 +61,55 @@ public class appElement {
 
     }
 
-    public void Swipe() throws Exception{
-        setAppElement();
+    public void Swipe(String direction) {
+        double SwipeDuration = 0.5; //This is the minimum amount, anything less crashes the app
+        direction.toUpperCase();
+        if ((direction.equals("LEFT")) || (direction.equals("L"))) {
+            SwipeDirection(0.95, 0.5, 0.05, 0.5, SwipeDuration);
+        } else if ((direction.equals("RIGHT")) || (direction.equals("R"))) {
+            SwipeDirection(0.05, 0.5, 0.95, 0.5, SwipeDuration);
+        } else if ((direction.equals("UP")) || (direction.equals("U"))) {
+            SwipeDirection(0.5, 0.95, 0.5, 0.05, SwipeDuration);
+        } else if ((direction.equals("DOWN")) || (direction.equals("D"))) {
+            SwipeDirection(0.5, 0.05, 0.5, 0.95, SwipeDuration);
+        } else {
+            System.out.println("Invalid Swipe Direction called.");
+        }
+    }
 
+    public void ScrollUp(){
+       SwipeDirection(0.0, 0.0, 0.5, 0.95, 0.0);
+    }
+
+    public void ScrollDown(){
+        SwipeDirection(0.0, 0.0, 0.5, 0.20, 0.0);
+    }
+    private void SwipeDirection(Double SrtX, Double SrtY, Double endX, Double endY, Double duration){
+
+        setAppElement();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         HashMap<String, Double> swipeObject = new HashMap<String, Double>();
 
-        //swipeObject.put("touchCount", 1);
-        swipeObject.put("startX", 0.95);
-        swipeObject.put("startY", 0.5);
-        swipeObject.put("endX", 0.05);
-        swipeObject.put("endY", 0.5);
-        swipeObject.put("duration", 1.8);
-        //swipeObject.put("element", element);
+        if(duration > 0.0)
+        {
+            swipeObject.put("startX", SrtX);
+            swipeObject.put("startY", SrtY);
+            swipeObject.put("endX", endX);
+            swipeObject.put("endY", endY);
+            swipeObject.put("duration", duration);
+            js.executeScript("mobile: swipe", swipeObject);
+        }
+        else {
 
-        js.executeScript("mobile: swipe", swipeObject);
+            swipeObject.put("endX", endX);
+            swipeObject.put("endY", endY);
+            js.executeScript("mobile: flick", swipeObject);
+        }
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println("Thread Sleep in SwipeDirection() Interrupted");
+        }
     }
+
 }
