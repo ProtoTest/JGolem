@@ -16,8 +16,8 @@ import java.util.ArrayList;
  * @author Matt Siwiec
  */
 public final class Config {
-    static Configuration config;
-    static final String CONFIG_FILE_NAME = "Test.properties";
+    private static Configuration config;
+    private static final String CONFIG_FILE_NAME = "Test.properties";
 
     // static constructor
     static {
@@ -53,24 +53,19 @@ public final class Config {
         if(key == null) throw new NullPointerException("param 'key' can not be null!");
         if(default_value == null) throw new NullPointerException("param 'default_value' can not be null!");
 
-        if(default_value.getClass().equals(Integer.class)) {
-            Integer val = config.getInteger(key, (Integer)default_value);
-            if(val != null) {
-                ret_val = (T)val;
+        if(config != null) {
+            if(default_value instanceof Integer) {
+                ret_val = (T)config.getInteger(key, (Integer)default_value);
+            } else if(default_value instanceof String) {
+                ret_val = (T)config.getString(key);
+            } else if(default_value instanceof Boolean) {
+                ret_val = (T)config.getBoolean(key, (Boolean)default_value);
+            } else if(default_value instanceof String[]) {
+                ret_val = (T)config.getStringArray(key);
             }
-        } else if(default_value.getClass().equals(String.class)) {
-            String val = config.getString(key);
-            if(val != null) {
-                ret_val = (T)val;
+            else {
+                throw new IllegalArgumentException(default_value.getClass() + " is not supported by this function");
             }
-        } else if(default_value.getClass().equals(Boolean.class)) {
-            Boolean val = config.getBoolean(key);
-            if(val != null) {
-                ret_val = (T)val;
-            }
-        }
-        else {
-            throw new IllegalArgumentException(default_value.getClass() + " is not supported by this function");
         }
 
         return ret_val;
@@ -95,21 +90,28 @@ public final class Config {
 
             // static class constructor
             static {
-                browsers = getBrowserList();
-                launchBrowser = Config.getConfigValue("LaunchBrowser", true);
-                testTimeoutMin = Config.getConfigValue("TestTimeoutMin", 5);
-                elementTimeoutSec = Config.getConfigValue("ElementTimeoutSec", 20);
-                pageTimeoutSec = Config.getConfigValue("PageTimeoutSec", 30);
-                environmentURL = Config.getConfigValue("EnvironmentURL", "");
-                degreeOfParallelism = Config.getConfigValue("DegreeOfParallelism", 5);
-                commandDelayMs = Config.getConfigValue("CommandDelayMs", 0);
-                runOnRemoteHost = Config.getConfigValue("RunOnRemoteHost", false);
-                hostIP = Config.getConfigValue("HostIp", "localhost");
+                try {
+                    browsers = getBrowserList();
+                    launchBrowser = Config.getConfigValue("LaunchBrowser", true);
+                    testTimeoutMin = Config.getConfigValue("TestTimeoutMin", 5);
+                    elementTimeoutSec = Config.getConfigValue("ElementTimeoutSec", 20);
+                    pageTimeoutSec = Config.getConfigValue("PageTimeoutSec", 30);
+                    environmentURL = Config.getConfigValue("EnvironmentURL", "");
+                    degreeOfParallelism = Config.getConfigValue("DegreeOfParallelism", 5);
+                    commandDelayMs = Config.getConfigValue("CommandDelayMs", 0);
+                    runOnRemoteHost = Config.getConfigValue("RunOnRemoteHost", false);
+                    hostIP = Config.getConfigValue("HostIp", "localhost");
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
             }
 
             private static ArrayList<WebDriverBrowser.Browser> getBrowserList() {
                 ArrayList<WebDriverBrowser.Browser> browsers = new ArrayList<WebDriverBrowser.Browser>();
-                String[] browserConfigList = config.getStringArray("Browsers");
+                String[] browserConfigList = {};
+                browserConfigList = Config.getConfigValue("Browsers", browserConfigList);
                 if(browserConfigList != null) {
                     for(String browser_str: browserConfigList) {
                         // do not test on IE if the OS is not Windows
@@ -134,12 +136,18 @@ public final class Config {
             public static Boolean spellChecking;
 
             static {
-                htmlOnError = Config.getConfigValue("HtmlOnError", true);
-                screenShotOnError = Config.getConfigValue("ScreenshotOnError", true);
-                videoRecordingOnError = Config.getConfigValue("VideoRecordingOnError", true);
-                commandLogging = Config.getConfigValue("CommandLogging", true);
-                actionLogging = Config.getConfigValue("ActionLogging", true);
-                spellChecking = Config.getConfigValue("SpellChecking", true);
+                try {
+                    htmlOnError = Config.getConfigValue("HtmlOnError", true);
+                    screenShotOnError = Config.getConfigValue("ScreenshotOnError", true);
+                    videoRecordingOnError = Config.getConfigValue("VideoRecordingOnError", true);
+                    commandLogging = Config.getConfigValue("CommandLogging", true);
+                    actionLogging = Config.getConfigValue("ActionLogging", true);
+                    spellChecking = Config.getConfigValue("SpellChecking", true);
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
 
@@ -151,9 +159,15 @@ public final class Config {
 
             // static class constructor
             static {
-                startProxy = Config.getConfigValue("StartWHATSMYNAMEProxy", true);
-                proxyPort = Config.getConfigValue("ProxyPort", 8876);
-                sslProxyPort = Config.getConfigValue("SSLProxyPort", 7777);
+                try {
+                    startProxy = Config.getConfigValue("StartWHATSMYNAMEProxy", true);
+                    proxyPort = Config.getConfigValue("ProxyPort", 8876);
+                    sslProxyPort = Config.getConfigValue("SSLProxyPort", 7777);
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
 
@@ -164,9 +178,15 @@ public final class Config {
 
             // static class constructor
             static {
-                localProxy = Config.getConfigValue("UseLocalProxy", false);
-                localPort = Config.getConfigValue("ProxyPort", 8888);
-                localHost = Config.getConfigValue("HostIP", "localhost");
+                try {
+                    localProxy = Config.getConfigValue("UseLocalProxy", false);
+                    localPort = Config.getConfigValue("ProxyPort", 8888);
+                    localHost = Config.getConfigValue("HostIP", "localhost");
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
 
@@ -179,11 +199,17 @@ public final class Config {
 
             // static class constructor
             static {
-                launchApp = Config.getConfigValue("LauchApp", false);
-                appPath = Config.getConfigValue("AppPath", "");
-                appPackage = Config.getConfigValue("AppPackage", "");
-                activity = Config.getConfigValue("AppActivity", "");
-                appOS = Config.getConfigValue("AppOS", "Android");
+                try {
+                    launchApp = Config.getConfigValue("LauchApp", false);
+                    appPath = Config.getConfigValue("AppPath", "");
+                    appPackage = Config.getConfigValue("AppPackage", "");
+                    activity = Config.getConfigValue("AppActivity", "");
+                    appOS = Config.getConfigValue("AppOS", "Android");
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
     }
