@@ -53,15 +53,17 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
         MenuButton.tap();
         return new Makr_Home_Screen();
     }
-
     public Makr_Home_Screen SwipeView() {
-
-
-
 
         AppMainWindow.ScrollUp();
         AppMainWindow.ScrollDown();
 
         return new Makr_Home_Screen();
     }
+
+    public Makr_Projects_Screen ClickProjects(){
+        ProjectsButton.tap();
+        return new Makr_Projects_Screen();
+    }
+
 }

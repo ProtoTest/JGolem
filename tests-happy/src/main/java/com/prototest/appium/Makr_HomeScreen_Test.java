@@ -15,7 +15,7 @@ public class Makr_HomeScreen_Test extends appiumTestBase {
     @Test
     public void foo(){
 
-        Makr_Home_Screen.StartMaker().VerifyContent().SwipeView().ClickButton();
+        Makr_Home_Screen.StartMaker().ClickProjects().SelectProject(3);
 
     }
 }
