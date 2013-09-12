@@ -35,6 +35,10 @@ public class appElement {
         element = driver.findElement(by);
     }
 
+    public String getName(){
+        return this.name;
+    }
+
 
 
     public void tap(){
@@ -75,6 +79,13 @@ public class appElement {
         } else {
             System.out.println("Invalid Swipe Direction called.");
         }
+    }
+
+    public void SendKeys(String text){
+        element.sendKeys(text);
+    }
+    public String getText(){
+        return element.getText();
     }
 
     public void ScrollUp(){
