@@ -20,14 +20,12 @@ public class MyFirstTestNGTest extends TestBase {
         boolean launchBrowser = Config.Settings.RuntimeSettings.launchBrowser;
         System.out.println("Shall I launch the browser?" + launchBrowser);
 
-        Properties myProps = System.getProperties();
-        System.out.println(myProps.toString());
 
-//        GoogleHomePage.
-//                OpenGoogle().
-//                SearchFor("ProtoTest").
-//                VerifyResult("ProtoTest « Beyond Bugs").
-//                GoToResult("ProtoTest « Beyond Bugs");
+        GoogleHomePage.
+                OpenGoogle().
+                SearchFor("ProtoTest").
+                VerifyResult("ProtoTest « Beyond Bugs").
+                GoToResult("ProtoTest « Beyond Bugs");
     }
 
     @Test
