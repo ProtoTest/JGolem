@@ -11,6 +11,9 @@ package com.prototest.appium;
 import com.prototest.appiumcore.*;
 import org.openqa.selenium.By;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
 
@@ -23,15 +26,27 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
     appElement HolidayButton = new appElement("Holiday", By.name("HOLIDAY"));
     appElement ScrollView = new appElement("ScrollView", By.xpath("//window[1]/UIACollectionView[1]/scrollview[1]"));
 
+    List<appElement> ScreenElements;
+
+    public Makr_Home_Screen(){
+        InitList();
+        VerifyContent(ScreenElements);
+    }
+    private void InitList(){
+        ScreenElements = new ArrayList<appElement>();
+        ScreenElements.add(BusinessButton);
+        ScreenElements.add(CelebrationsButton);
+        ScreenElements.add(HomeButton);
+        ScreenElements.add(WeddingButton);
+        ScreenElements.add(BabyButton);
+        ScreenElements.add(HolidayButton);
+        ScreenElements.add(ScrollView);
+    }
     public static Makr_Home_Screen StartMaker(){
         appiumTestBase.getDriver();
         return new Makr_Home_Screen();
     }
 
-    public  Makr_Home_Screen VerifyContent(){
-        VerifyHeader();
-        return new Makr_Home_Screen();
-    }
 
     public Makr_Home_Screen ClickButton(){
 

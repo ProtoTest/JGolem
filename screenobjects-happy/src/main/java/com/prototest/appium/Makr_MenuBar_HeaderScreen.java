@@ -29,6 +29,7 @@ public class Makr_MenuBar_HeaderScreen extends appiumScreenBase {
 
     public Makr_MenuBar_HeaderScreen(){
         initList();
+        VerifyContent(MenuBarElements);
     }
 
     private void initList(){
@@ -43,20 +44,7 @@ public class Makr_MenuBar_HeaderScreen extends appiumScreenBase {
         MenuBarElements.add(PlusButton);
     }
 
-    public void VerifyHeader(){
-        //TODO: Need to build a logging function or something
-        if(MenuBarElements.size() > 0){
-            for(int i = 0; i < MenuBarElements.size(); i++){
-                if(MenuBarElements.get(i).verifyPresent()){
-                    System.out.println("This thing exists");
-                }
-                else {
-                    System.out.println("This thing does not exist");
-                }
-            }
-        }
 
-    }
 
 
 
