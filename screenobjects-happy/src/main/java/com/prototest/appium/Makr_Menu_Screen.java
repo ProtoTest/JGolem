@@ -29,6 +29,7 @@ public class Makr_Menu_Screen extends appiumScreenBase {
 
     public Makr_Menu_Screen(){
         InitList();
+        VerifyContent(MenuElements);
     }
 
     private void InitList() {
