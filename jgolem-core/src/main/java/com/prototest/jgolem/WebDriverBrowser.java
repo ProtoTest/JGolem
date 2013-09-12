@@ -108,7 +108,6 @@ public class WebDriverBrowser {
         int index = currentModulePath.lastIndexOf("/");
         String thisModuleName = currentModulePath.substring(index);
         String chromePath = currentModulePath.replace(thisModuleName, "/jgolem-core/chromedriver");
-        System.out.println("The path of chrome is: " + chromePath);
 
         System.setProperty("webdriver.chrome.driver", chromePath);
     }
