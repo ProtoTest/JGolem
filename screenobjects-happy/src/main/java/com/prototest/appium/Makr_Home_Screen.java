@@ -66,4 +66,10 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
         return new Makr_Projects_Screen();
     }
 
+    public Makr_Blog_Screen ClickBlogs(){
+        BlogButton.tap();
+        return new Makr_Blog_Screen();
+
+    }
+
 }
