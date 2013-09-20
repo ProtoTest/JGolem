@@ -25,6 +25,9 @@ public class MyFirstTestNGTest extends TestBase {
                 OpenGoogle().
                 SearchFor("ProtoTest").
                 VerifyResult("ProtoTest « Beyond Bugs").
+                VerifyResultNotVisible("ProtoTest « Beyond Bugs").
+                VerifyResult("Psdfsdf").
+                VerifyResultNotVisible("SDLFKJSDF").
                 GoToResult("ProtoTest « Beyond Bugs");
     }
 
