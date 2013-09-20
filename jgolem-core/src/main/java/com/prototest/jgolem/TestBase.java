@@ -26,7 +26,7 @@ public class TestBase {
     }
 
     public void launchBrowser() {
-        driver = new WebDriverBrowser().launchBrowser(WebDriverBrowser.Browser.Chrome);
+        driver = new WebDriverBrowser().launchBrowser(WebDriverBrowser.Browser.Firefox);
     }
 
     public void quitBrowser() {

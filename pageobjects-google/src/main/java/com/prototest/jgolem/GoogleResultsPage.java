@@ -12,7 +12,7 @@ public class GoogleResultsPage {
 
     public Element searchResult(String text)
     {
-        searchResult = new Element("SearchResultLink", By.partialLinkText(text));
+         searchResult = new Element("SearchResultLink", By.partialLinkText(text));
         return searchResult;
     }
 
@@ -27,7 +27,13 @@ public class GoogleResultsPage {
 
     public GoogleResultsPage VerifyResult(String text)
     {
-        searchResult(text).VerifyVisible(10);
+        searchResult(text).Verify(10).IsVisible();
+        return new GoogleResultsPage();
+    }
+
+    public GoogleResultsPage VerifyResultNotVisible(String text)
+    {
+        searchResult(text).Verify(10).Not.IsVisible();
         return new GoogleResultsPage();
     }
 

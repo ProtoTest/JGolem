@@ -1,61 +1,60 @@
 
 package com.prototest.jgolem;
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
+//Element class can be instantiated any time but only looks for the element on the page when a function is called
 public class Element implements WebElement{
     private By by;
     private WebDriver driver;
     private String name;
     private WebElement element;
+    public Verification Verify;
 
     public Element(String name, By by) {
         this.name = name;
         this.by = by;
+        this.Verify = new Verification();
         this.driver = TestBase.getDriver();
-        try {
-            this.element = driver.findElement(by);
-        }catch (NoSuchElementException e) {
-            System.out.println("Failed to find element: " + this.name);
-            e.printStackTrace();
-        }
     }
 
-    public boolean getDisplayed() {
-        return element.isDisplayed();
+    public Verification Verify(int timeoutSec){
+        return new Verification(this,timeoutSec);
     }
 
-    public boolean getEnabled() {
-        return element.isEnabled();
+    public By getBy(){
+        return by;
     }
 
-    public boolean getSelected() {
-        return element.isSelected();
+    public WebElement getElement()
+    {
+            return driver.findElement(this.by);
     }
 
     public Point getLocation() {
-        return element.getLocation();
+        return getElement().getLocation();
     }
 
     public Dimension getSize() {
-        return element.getSize();
+        return getElement().getSize();
     }
 
     public String getTagName() {
-        return element.getTagName();
+        return getElement().getTagName();
     }
 
     public String getText() {
-        return element.getText();
+        return getElement().getText();
     }
 
     public String getAttribute(String attribute) {
         try {
-            return element.getAttribute(attribute);
+            return getElement().getAttribute(attribute);
         }
         catch (Exception e) {
             System.out.println("Failed to get attribute: " + attribute);
@@ -67,23 +66,23 @@ public class Element implements WebElement{
 
     @Override
     public boolean isSelected() {
-        if (element.isSelected()) return true;
+        if (getElement().isSelected()) return true;
         else return false;
     }
 
     @Override
     public boolean isEnabled() {
-        if (element.isEnabled()) return true;
+        if (getElement().isEnabled()) return true;
         else return false;
     }
 
     public String getCssValue(String css) {
-        return element.getCssValue(css);
+        return getElement().getCssValue(css);
     }
 
     public Element setCheckbox(boolean checked) {
-        if(element.isSelected() != checked) {
-            element.click();
+        if(getElement().isSelected() != checked) {
+            getElement().click();
         }
 
         return this;
@@ -91,35 +90,43 @@ public class Element implements WebElement{
 
     // this shit crashes
     public void setText(String text) {
-        WebElement textField = element;
-        textField.clear();
-        textField.sendKeys(text);
+        getElement().clear();
+        getElement().sendKeys(text);
     }
 
     public WebElement findElement(By by) {
-        return element.findElement(by);
+        return getElement().findElement(by);
     }
 
     @Override
     public boolean isDisplayed() {
-        if (element.isDisplayed()) return true;
-        else return false;
+        if ((isPresent())&&(getElement().isDisplayed())) return true;
+        else
+            return false;
     }
 
+    public boolean isPresent() {
+        if(driver.findElements(by).size()>0)
+            return true;
+        else
+            return false;
+    }
+
+
     public List<WebElement> findElements(By by) {
-        return element.findElements(by);
+        return getElement().findElements(by);
     }
 
     public void clear() {
-        element.clear();
+        getElement().clear();
     }
 
     public void click() {
-        element.click();
+        getElement().click();
     }
 
     public void submit() {
-        element.submit();
+        getElement().submit();
     }
 
     @Override
@@ -129,7 +136,7 @@ public class Element implements WebElement{
 
     public void sendKeys(String text) {
         waitUntilVisible();
-        element.sendKeys(text);
+        getElement().sendKeys(text);
     }
 
     public Element waitUntilVisible() {
@@ -137,19 +144,4 @@ public class Element implements WebElement{
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return this;
     }
-
-    public Element VerifyVisible() {
-        return this;
-    }
-
-    public Element VerifyVisible(int seconds) {
-        if (seconds >= 0) {
-            return this;
-        }
-        else {
-            return null;
-        }
-    }
-
-
 }
