@@ -4,6 +4,7 @@ import com.prototest.appiumcore.*;
 
 import org.testng.annotations.Test;
 
+
 /**
  * Created with IntelliJ IDEA.
  * User: Seth
@@ -13,7 +14,7 @@ import org.testng.annotations.Test;
  */
 public class Makr_HomeScreen_Test extends appiumTestBase {
     @Test
-    public void foo(){
+    public void main(){
 
         Makr_Home_Screen.StartMaker().ClickProjects().SelectProject(3);
 
