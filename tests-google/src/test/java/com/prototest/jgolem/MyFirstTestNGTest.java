@@ -1,8 +1,9 @@
 package com.prototest.jgolem;
 
+import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-import java.util.Properties;
 
 public class MyFirstTestNGTest extends TestBase {
     @Test
@@ -26,7 +27,7 @@ public class MyFirstTestNGTest extends TestBase {
                 SearchFor("ProtoTest").
                 VerifyResult("ProtoTest « Beyond Bugs").
                 VerifyResultNotVisible("ProtoTest « Beyond Bugs").
-                VerifyResult("Psdfsdf").
+                //VerifyResult("Psdfsdf").
                 VerifyResultNotVisible("SDLFKJSDF").
                 GoToResult("ProtoTest « Beyond Bugs");
     }
@@ -34,5 +35,6 @@ public class MyFirstTestNGTest extends TestBase {
     @Test
     public void testLogin() {
         System.out.println("Running Login google");
+        Reporter.log("Here is a Test Log that is supposed to be in the Report!");
     }
 }
