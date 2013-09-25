@@ -30,13 +30,13 @@ public class appiumTestBase {
     }
 
     private void launchBrowser() throws Exception{
-        File app = new File("/Users/sethurban/Library/Developer/Xcode/DerivedData/Makr-cvsoqtvihpokiseidyefsjxwedqw/Build/Products/Debug-iphonesimulator/Makr.app");
+        //File app = new File("/Users/sethurban/Library/Developer/Xcode/DerivedData/Makr-cvsoqtvihpokiseidyefsjxwedqw/Build/Products/Debug-iphonesimulator/Makr.app");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "iOS");
         capabilities.setCapability(CapabilityType.VERSION, "6.1");
         capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
 
-        capabilities.setCapability("app", app.getAbsolutePath());
+        //capabilities.setCapability("app", app.getAbsolutePath());
 
         driver = new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
         window = new appElement("Main_Window", By.xpath("//window[1]"));
