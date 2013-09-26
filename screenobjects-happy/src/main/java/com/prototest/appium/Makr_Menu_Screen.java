@@ -14,11 +14,10 @@ import java.util.List;
  * This represents the object that get's called when the menu "M" button is pressed from the HeaderScreen
  */
 public class Makr_Menu_Screen extends appiumScreenBase {
-    appElement LoggedInAs = new appElement("LoggedInAS", By.name("Logged-in as"));
-    appElement LoggedInUser = new appElement("Username", By.xpath("//window[1]/textp[2]"));
+    appElement LoginButton = new appElement("LoginButton", By.name("Log in"));
     appElement Logout = new appElement("LogoutButton", By.name("Logout"));
-    appElement AccountSettings = new appElement("AccountSettings", By.name("Account Settings >"));
-    appElement AlignPrinter = new appElement("AlignPrinterButton", By.name("Alighn Printer"));
+    appElement AccountSettings = new appElement("AccountSettings", By.name("Account"));
+    appElement AlignPrinter = new appElement("AlignPrinterButton", By.name("Align Printer"));
     appElement ViewTutorial = new appElement("ViewTutorial", By.name("View Tutorial"));
     appElement HelpClues = new appElement("HelpClues", By.name("Help Clues on/off"));
     appElement FAQpage = new appElement("FAQPage", By.name("FAQ page >"));
@@ -34,8 +33,7 @@ public class Makr_Menu_Screen extends appiumScreenBase {
 
     private void InitList() {
         MenuElements = new ArrayList<appElement>();
-        MenuElements.add(LoggedInAs);
-        MenuElements.add(LoggedInUser);
+        MenuElements.add(LoginButton);
         MenuElements.add(Logout);
         MenuElements.add(AccountSettings);
         MenuElements.add(AlignPrinter);

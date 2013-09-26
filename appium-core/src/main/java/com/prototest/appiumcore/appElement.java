@@ -123,4 +123,8 @@ public class appElement {
         }
     }
 
+    public String GetName(){
+        return element.getAttribute("name:");
+    }
+
 }

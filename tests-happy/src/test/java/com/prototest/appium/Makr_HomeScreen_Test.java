@@ -19,4 +19,9 @@ public class Makr_HomeScreen_Test extends appiumTestBase {
         Makr_Home_Screen.StartMaker().ClickProjects().SelectProject(3);
 
     }
+
+    @Test
+    public void UserMenu(){
+
+    }
 }

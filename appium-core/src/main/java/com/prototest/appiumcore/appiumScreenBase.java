@@ -15,6 +15,10 @@ import java.util.List;
 public class appiumScreenBase {
     protected  appElement AppMainWindow = new appElement("AppMainWindow", By.xpath("//window[1]"));
 
+
+
+
+    /*This function has the list of elements passed into it to verify they are present on any given screen */
     protected void VerifyContent(List<appElement> elements){
         if(elements.size() > 0){
             for(int i = 0; i < elements.size(); i++){
