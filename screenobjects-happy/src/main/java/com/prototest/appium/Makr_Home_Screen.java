@@ -30,7 +30,7 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
 
     public Makr_Home_Screen(){
         InitList();
-        //VerifyContent(ScreenElements);
+        VerifyContent(ScreenElements);
     }
     private void InitList(){
         ScreenElements = new ArrayList<appElement>();
@@ -47,21 +47,9 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
         return new Makr_Home_Screen();
     }
 
-    public Makr_Home_Screen Login(String user, String pass){
+    public Makr_Menu_Screen OpenUserMenu(){
         MenuButton.tap();
-        Makr_Menu_Screen Menu = new Makr_Menu_Screen();
-        Menu.LoginButton.tap();
-        Makr_Login_Screen regLogin = new Makr_Login_Screen();
-        AppMainWindow.tap();
-        regLogin.usernameField.SendKeys(user);
-        regLogin.PasswordField.SendKeys(pass);
-        regLogin.LoginButton.tap();
-        Makr_Survey_Screen survey = new Makr_Survey_Screen();
-        if(survey.detectSurvey()){
-            survey.CompleteSurvey();
-        }
-
-        return new Makr_Home_Screen();
+        return new Makr_Menu_Screen();
     }
 
     public Makr_Home_Screen ClickButton(){

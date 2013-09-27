@@ -29,12 +29,15 @@ public class Makr_Menu_Screen extends appiumScreenBase {
 
 
     List<appElement> MenuElements;
+    private boolean loggedIn;
 
     public Makr_Menu_Screen(){
         if(LoginButton.verifyPresent()){
             InitList_login();
+            loggedIn = false;
         }else{
             InitList_logout();
+            loggedIn = true;
         }
         VerifyContent(MenuElements);
     }
@@ -58,6 +61,13 @@ public class Makr_Menu_Screen extends appiumScreenBase {
         MenuElements.add(InviteFriends);
         MenuElements.add(Help);
         MenuElements.add(TermsandConditions);
+    }
+
+    public Makr_Login_Screen Login(){
+        if(!loggedIn){
+            LoginButton.tap();
+        }
+        return new Makr_Login_Screen();
     }
 
 

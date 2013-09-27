@@ -39,7 +39,9 @@ public class appElement {
         return this.name;
     }
 
-
+    public String getAttName(){
+        return element.getAttribute("name:");
+    }
 
     public void tap(){
         setAppElement();
@@ -123,8 +125,6 @@ public class appElement {
         }
     }
 
-    public String GetName(){
-        return element.getAttribute("name:");
-    }
+
 
 }
