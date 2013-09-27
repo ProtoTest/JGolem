@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
  * Time: 1:29 PM
  * This the screen that occasionally pops up when users start the application
  */
-public class Makr_SurveyScreen {
+public class Makr_Survey_Screen {
 
     appElement SurveyCancel = new appElement("SurveyCancel", By.name("Cancel"));
     appElement OkButton = new appElement("OkButton", By.name("Ok!"));
@@ -26,6 +26,11 @@ public class Makr_SurveyScreen {
             survey = false;
         }
         return survey;
+    }
+
+    public void CompleteSurvey(){
+        OkButton.tap();
+        sendResponse.tap();
     }
 
 }

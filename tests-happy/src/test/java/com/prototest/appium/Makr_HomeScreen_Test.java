@@ -22,6 +22,6 @@ public class Makr_HomeScreen_Test extends appiumTestBase {
 
     @Test
     public void UserMenu(){
-
+        Makr_Home_Screen.StartMaker().Login("surban@prototest.com", "happier");
     }
 }

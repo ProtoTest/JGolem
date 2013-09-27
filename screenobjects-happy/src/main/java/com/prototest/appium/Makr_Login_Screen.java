@@ -14,13 +14,15 @@ import java.util.List;
  * This is the login screen, displayed before the Main screen sometimes.
  */
 public class Makr_Login_Screen extends appiumScreenBase {
-    appElement usernameField = new appElement("UserNameField", By.xpath("//window[1]/textfield[1]"));
-    appElement PasswordField = new appElement("PasswordField", By.xpath("//window[1]/secure[1]"));
-    appElement LoginButton = new appElement("LoginButton", By.name("LOGIN"));
+    appElement usernameField = new appElement("UserNameField", By.xpath("//window[1]/textfield[4]"));
+    appElement PasswordField = new appElement("PasswordField", By.xpath("//window[1]/secure[4]"));
+    appElement LoginButton = new appElement("LoginButton", By.xpath("//window[1]/button[10]"));
+    appElement RegisterButton = new appElement("RegisterButton", By.name("REGISTER"));
 
     List<appElement> ScreenElements;
     public Makr_Login_Screen(){
         InitList();
+        VerifyContent(ScreenElements);
     }
 
     private void InitList() {
