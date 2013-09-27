@@ -18,11 +18,16 @@ public class Makr_Login_Screen extends appiumScreenBase {
     appElement PasswordField = new appElement("PasswordField", By.xpath("//window[1]/secure[4]"));
     appElement LoginButton = new appElement("LoginButton", By.xpath("//window[1]/button[10]"));
     appElement RegisterButton = new appElement("RegisterButton", By.name("REGISTER"));
+    appElement FaceBookLogin = new appElement("FaceBook_Login", By.name("lgnFacebookLoginButton normal"));
+    appElement ForgotPassword = new appElement("ForgotPassword", By.name("FORGOT PASSWORD"));
+
+
 
     List<appElement> ScreenElements;
     public Makr_Login_Screen(){
         InitList();
         VerifyContent(ScreenElements);
+        AppMainWindow.tap();
     }
 
     private void InitList() {
@@ -30,16 +35,21 @@ public class Makr_Login_Screen extends appiumScreenBase {
         ScreenElements.add(usernameField);
         ScreenElements.add(PasswordField);
         ScreenElements.add(LoginButton);
+        ScreenElements.add(RegisterButton);
+        ScreenElements.add(FaceBookLogin);
+        ScreenElements.add(ForgotPassword);
 
     }
 
     public Makr_Home_Screen emailLogin(String username, String password){
-        AppMainWindow.tap(); //this needs to be done to get the login screen elements to appear
+        //AppMainWindow.tap(); //this needs to be done to get the login screen elements to be visible
         usernameField.SendKeys(username);
         PasswordField.SendKeys(password);
         LoginButton.tap();
         return new Makr_Home_Screen();
     }
+
+
 
 
 }
