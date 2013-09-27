@@ -44,6 +44,11 @@ public class Makr_MenuBar_HeaderScreen extends appiumScreenBase {
         MenuBarElements.add(PlusButton);
     }
 
+    public Makr_NewProjectMenu_Screen OpenProjectMenu(){
+        PlusButton.tap();
+        return new Makr_NewProjectMenu_Screen();
+    }
+
 
 
 
