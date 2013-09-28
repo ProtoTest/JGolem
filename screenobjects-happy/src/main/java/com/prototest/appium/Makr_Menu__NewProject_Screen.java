@@ -14,7 +14,7 @@ import java.util.List;
  * Time: 7:25 PM
  * This is the screen that comes up when the user clicks the plus button
  */
-public class Makr_NewProjectMenu_Screen extends appiumScreenBase {
+public class Makr_Menu__NewProject_Screen extends appiumScreenBase {
     appElement PlusButton = new appElement("PlusButton", By.name("wmbPlusButton normal"));
     appElement NewProject = new appElement("NEW PROJECT", By.xpath("//window[1]/text[1]"));
 
@@ -69,7 +69,7 @@ public class Makr_NewProjectMenu_Screen extends appiumScreenBase {
     List<appElement> ThankyouItems;
     List<appElement> WeddingItems;
 
-    public Makr_NewProjectMenu_Screen(){
+    public Makr_Menu__NewProject_Screen(){
         InitList();
         VerifyContent(MainItems);
     }

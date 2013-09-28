@@ -13,7 +13,7 @@ import java.util.List;
  * Time: 7:06 PM
  * This represents the object that get's called when the menu "M" button is pressed from the HeaderScreen
  */
-public class Makr_Menu_Screen extends appiumScreenBase {
+public class Makr_Menu_User_Screen extends appiumScreenBase {
     public appElement LoginButton = new appElement("LoginButton", By.name("Log In"));
     public appElement LogoutButton = new appElement("LogoutButton", By.name("LogoutButton"));
     public appElement AccountSettings = new appElement("AccountSettings", By.name("Account"));
@@ -31,7 +31,7 @@ public class Makr_Menu_Screen extends appiumScreenBase {
     List<appElement> MenuElements;
     private boolean loggedIn;
 
-    public Makr_Menu_Screen(){
+    public Makr_Menu_User_Screen(){
         if(LoginButton.verifyPresent()){
             InitList_login();
             loggedIn = false;

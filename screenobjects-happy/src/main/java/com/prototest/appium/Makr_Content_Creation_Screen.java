@@ -3,6 +3,9 @@ package com.prototest.appium;
 import com.prototest.appiumcore.*;
 import org.openqa.selenium.By;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Seth
@@ -28,6 +31,31 @@ public class Makr_Content_Creation_Screen extends appiumScreenBase {
 
     appElement addText = new appElement("AddText", By.xpath("//window[1]/button[9]"));
     appElement addArt = new appElement("addArt", By.xpath("//window[1]/button[9]"));
+
+    List<appElement> ScreenElements;
+
+    public Makr_Content_Creation_Screen(){
+        InitList();
+        VerifyContent(ScreenElements);
+    }
+
+    private void InitList() {
+        ScreenElements = new ArrayList<appElement>();
+        ScreenElements.add(UserMenu);
+        ScreenElements.add(CloseButton);
+        ScreenElements.add(SaveButton);
+        ScreenElements.add(MakeButton);
+        ScreenElements.add(UndoButton);
+        ScreenElements.add(RedoButton);
+        ScreenElements.add(CreationTitle);
+        ScreenElements.add(addArt);
+        ScreenElements.add(addText);
+    }
+
+    public Makr_Menu_User_Screen tapUsermenu(){
+        UserMenu.tap();
+        return new Makr_Menu_User_Screen();
+    }
 
 
 

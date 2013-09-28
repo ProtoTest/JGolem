@@ -47,9 +47,9 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
         return new Makr_Home_Screen();
     }
 
-    public Makr_Menu_Screen OpenUserMenu(){
+    public Makr_Menu_User_Screen OpenUserMenu(){
         MenuButton.tap();
-        return new Makr_Menu_Screen();
+        return new Makr_Menu_User_Screen();
     }
 
     public Makr_Home_Screen ClickButton(){
