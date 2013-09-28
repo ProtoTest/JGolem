@@ -16,7 +16,7 @@ import java.util.Random;
 public class appiumScreenBase {
     protected  appElement AppMainWindow = new appElement("AppMainWindow", By.xpath("//window[1]"));
 
-
+    protected appiumScreenHistory.ScreenHistory ScreenHS = new appiumScreenHistory.ScreenHistory();
     appElement SurveyHeader = new appElement("SurveyHeader", By.xpath("//window[1]/navigationBar[1]/text[1]")); //This should be present on both surveys
 
     //Survey One Elements
@@ -41,18 +41,19 @@ public class appiumScreenBase {
                 else{
                     Cancel_SurveyOne();
                 }
-
             }
             else{
                 //do survey two stuff --
             }
-
         }
+    }
+    public void addScreenHistory(Object obj){
+        ScreenHS.addScreen(obj);
+        Object last = ScreenHS.getLast();
+        String className = last.getClass().getSimpleName();
+        System.out.print(className);
 
     }
-
-
-
     /*This function has the list of elements passed into it to verify they are present on any given screen */
     protected void VerifyContent(List<appElement> elements){
         if(elements.size() > 0){

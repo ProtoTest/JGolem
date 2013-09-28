@@ -30,6 +30,7 @@ public class Makr_BetaFeedback_Screen extends appiumScreenBase {
 
     public Makr_BetaFeedback_Screen(){
         InitList();
+        addScreenHistory(new Makr_BetaFeedback_Screen());
     }
 
     private void InitList() {

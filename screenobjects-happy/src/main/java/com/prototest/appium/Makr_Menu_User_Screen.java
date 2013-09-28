@@ -39,7 +39,8 @@ public class Makr_Menu_User_Screen extends appiumScreenBase {
             InitList_logout();
             loggedIn = true;
         }
-        VerifyContent(MenuElements);
+        //VerifyContent(MenuElements);
+        addScreenHistory(new Makr_Menu_User_Screen());
     }
 
     private void InitList_login() {

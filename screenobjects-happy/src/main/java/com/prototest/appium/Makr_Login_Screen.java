@@ -26,7 +26,8 @@ public class Makr_Login_Screen extends appiumScreenBase {
     List<appElement> ScreenElements;
     public Makr_Login_Screen(){
         InitList();
-        VerifyContent(ScreenElements);
+        //VerifyContent(ScreenElements);
+        addScreenHistory(new Makr_Login_Screen());
         AppMainWindow.tap();
     }
 
