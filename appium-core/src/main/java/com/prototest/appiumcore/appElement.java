@@ -49,7 +49,7 @@ public class appElement {
     }
 
     public boolean verifyPresent(){
-        setAppElement();
+        //setAppElement();
         boolean exists;
         if(driver.findElements(this.by).size() != 0)
         {
@@ -84,6 +84,7 @@ public class appElement {
     }
 
     public void SendKeys(String text){
+        setAppElement();
         element.sendKeys(text);
     }
     public String getText(){

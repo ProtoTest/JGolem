@@ -13,6 +13,7 @@ import java.util.Vector;
  * to assist with back button functionality
  */
 public class appiumScreenHistory {
+    //this thing isn't working right -- I'll figure it out later
     public static class ScreenHistory{
 
         Vector<Object> PreviousScreens;
