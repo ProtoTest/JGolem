@@ -32,6 +32,7 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
         InitList();
         VerifyContent(ScreenElements);
         //addScreenHistory();
+
     }
     private void InitList(){
         ScreenElements = new ArrayList<appElement>();

@@ -20,7 +20,7 @@ public class appiumScreenBase {
     appElement SurveyHeader = new appElement("SurveyHeader", By.xpath("//window[1]/navigationBar[1]/text[1]")); //This should be present on both surveys
 
     //Survey One Elements
-    appElement SurveyCancel = new appElement("SurveyCancel", By.name("//window[1]/navigationBar[1]/button[1]"));
+    appElement SurveyCancel = new appElement("SurveyCancel", By.xpath("//window[1]/navigationBar[1]/button[1]"));
     appElement OkButton = new appElement("OkButton", By.name("Ok!"));
     appElement oppsButton = new appElement("OppsButton", By.name("Oops. I'll come back when I am online."));
     appElement sendResponse = new appElement("SendResponse", By.name("Send Response"));
@@ -59,10 +59,10 @@ public class appiumScreenBase {
         if(elements.size() > 0){
             for(int i = 0; i < elements.size(); i++){
                 if(elements.get(i).verifyPresent()){
-                    System.out.println(elements.get(i).getName() + " is present");
+                    System.out.println(elements.get(i).GetElementName() + " is present");
                 }
                 else{
-                    System.out.println(elements.get(i).getName() + " is NOT present");
+                    System.out.println(elements.get(i).GetElementName() + " is NOT present");
                 }
 
             }

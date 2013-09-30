@@ -35,12 +35,13 @@ public class appElement {
         element = driver.findElement(by);
     }
 
-    public String getName(){
+    public String GetElementName(){
         return this.name;
     }
 
-    public String getAttName(){
-        return element.getAttribute("name:");
+    public String GetAttribute(String attr){
+        setAppElement();
+        return element.getAttribute(attr);
     }
 
     public void tap(){
@@ -51,7 +52,7 @@ public class appElement {
     public boolean verifyPresent(){
         //setAppElement();
         boolean exists;
-        if(driver.findElements(this.by).size() != 0)
+        if(driver.findElements(by).size() != 0)
         {
             exists = true;
         }

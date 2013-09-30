@@ -65,11 +65,11 @@ public class Makr_Projects_SelectedProject_Screen extends Makr_MenuBar_HeaderScr
         ScreenElements.add(email);
     }
 
-    public Makr_ShoppingCart_Screen OrderPrints(){
+    public Makr_ShoppingCart_Items_Screen OrderPrints(){
         OrderPrints.tap();
         AddtoCart.tap();
         CheckoutNow.tap();
-        return new Makr_ShoppingCart_Screen();
+        return new Makr_ShoppingCart_Items_Screen();
     }
 
     public void ChangeQuantity(int quantLevel){
