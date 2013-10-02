@@ -13,7 +13,7 @@ public class Regression {
     @Test
     public void Reg(){
         //Test for MONTH/DAY text error
-        Makr_Home_Screen.StartMaker().OpenUserMenu().Login().emailLogin("chancock@prototest.com","happy1").ClickProjects().SelectProject(5).TapOrderPrints();
+        Makr_Home_Screen.StartMaker().OpenUserMenu().Login().emailLogin("chancock@prototest.com","happy1").ClickProjects().SelectProject(5);
 
     }
 
