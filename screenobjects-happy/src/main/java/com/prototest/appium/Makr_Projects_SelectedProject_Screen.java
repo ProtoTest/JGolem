@@ -44,6 +44,11 @@ public class Makr_Projects_SelectedProject_Screen extends Makr_MenuBar_HeaderScr
     appElement HiRes_AirDrop = new appElement("PDFAirDrop", By.xpath("//window[1]/scrollview[1]/scrollview[1]/button[7]"));
     appElement HiRes_AirDrop_Help = new appElement("PDFAirDrop_Help", By.xpath("//window[1]/scrollview[1]/scrollview[1]/button[8]"));
 
+    //Proof
+    appElement checkedmyspellingfront = new appElement("SpellingCheckBoxFront", By.xpath("//window[1]/scrollview[1]/button[17]"));
+    appElement Iunderstandthatcolorsfront = new appElement("ColorCheckboxFront", By.xpath("//window[1]/scrollview[1]/button[18]"));
+    appElement ProofFrontNext = new appElement("Next", By.xpath("//window[1]/scrollview[1]/button[20]"));
+
     List<appElement> ScreenElements;
 
     public Makr_Projects_SelectedProject_Screen(){
@@ -90,6 +95,12 @@ public class Makr_Projects_SelectedProject_Screen extends Makr_MenuBar_HeaderScr
     public void verifyOrderText(){
 
     }
+
+    public void TapOrderPrints() {
+        OrderPrints.tap();
+        // TODO: Make a screen a return it
+    }
+
 
 
 }

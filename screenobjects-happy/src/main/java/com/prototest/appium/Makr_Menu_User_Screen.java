@@ -71,5 +71,9 @@ public class Makr_Menu_User_Screen extends appiumScreenBase {
         return new Makr_Login_Screen();
     }
 
+    public Makr_Menu_User_Account_screen ClickAccount(){
+        AccountSettings.tap();
+        return new Makr_Menu_User_Account_screen();
+    }
 
 }

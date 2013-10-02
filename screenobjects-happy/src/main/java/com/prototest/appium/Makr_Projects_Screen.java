@@ -50,11 +50,12 @@ public class Makr_Projects_Screen extends Makr_MenuBar_HeaderScreen {
         SideBarElements.add(SideBar_EditCategory);
     }
 
-    public void SelectProject(int projectID){
+    public Makr_Projects_SelectedProject_Screen SelectProject(int projectID){
         String thing = "[" + String.valueOf(projectID) + "]";
         String elementXpath = Project + thing;
         appElement SelectedProject = new appElement("SelectedProject", By.xpath(elementXpath));
         SelectedProject.tap();
+        return new Makr_Projects_SelectedProject_Screen();
     }
 
 
