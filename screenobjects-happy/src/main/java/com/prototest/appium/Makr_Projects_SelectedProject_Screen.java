@@ -45,8 +45,8 @@ public class Makr_Projects_SelectedProject_Screen extends Makr_MenuBar_HeaderScr
     appElement HiRes_AirDrop_Help = new appElement("PDFAirDrop_Help", By.xpath("//window[1]/scrollview[1]/scrollview[1]/button[8]"));
 
     //Proof
-    appElement checkedmyspellingfront = new appElement("SpellingCheckBoxFront", By.xpath("//window[1]/scrollview[1]/button[17]"));
-    appElement Iunderstandthatcolorsfront = new appElement("ColorCheckboxFront", By.xpath("//window[1]/scrollview[1]/button[18]"));
+    appElement Checkedmyspelling = new appElement("SpellingCheckBoxFront", By.xpath("//window[1]/scrollview[1]/button[17]"));
+    appElement Iunderstandthatcolors = new appElement("ColorCheckboxFront", By.xpath("//window[1]/scrollview[1]/button[18]"));
     appElement ProofFrontNext = new appElement("Next", By.xpath("//window[1]/scrollview[1]/button[20]"));
 
     List<appElement> ScreenElements;
@@ -92,14 +92,29 @@ public class Makr_Projects_SelectedProject_Screen extends Makr_MenuBar_HeaderScr
         ContinueMaking.tap();
     }
 
-    public void verifyOrderText(){
-
+    public boolean verifyOrderText(String text){
+        return OrderText.GetAttribute("value").equalsIgnoreCase(text);
     }
 
-    public void TapOrderPrints() {
+    public void TapOrderPrints1() {
         OrderPrints.tap();
-        // TODO: Make a screen a return it
+        Checkedmyspelling.tap();
+        Iunderstandthatcolors.tap();
+        ProofFrontNext.tap();
+
     }
+
+    public Makr_Projects_SelectedProject_Screen TapOrderPrints2() {
+        OrderPrints.tap();
+        Checkedmyspelling.tap();
+        Iunderstandthatcolors.tap();
+        ProofFrontNext.tap();
+        Checkedmyspelling.tap();
+        Iunderstandthatcolors.tap();
+        ProofFrontNext.tap();
+        return new Makr_Projects_SelectedProject_Screen();
+    }
+
 
 
 
