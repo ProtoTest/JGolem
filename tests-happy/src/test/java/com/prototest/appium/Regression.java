@@ -8,7 +8,7 @@ import com.prototest.appiumcore.*;
  * User: ChrisHancock
  * Date: 10/2/13
  * Time: 12:59 PM
- * To change this template use File | Settings | File Templates.
+ * This is our standard regression suite
  */
 public class Regression extends appiumTestBase {
     @Test
@@ -16,10 +16,16 @@ public class Regression extends appiumTestBase {
         String orderText = "Orders placed by 6PM will arrive on MONTH, DAY";
 
         //Test for MONTH/DAY text error
-        Makr_Home_Screen.StartMaker().OpenUserMenu().Login().emailLogin("chancock@prototest.com","happy1")
+        Makr_Home_Screen.StartMaker().OpenUserMenu().Login().emailLogin("chancock@prototest.com","happy!")
                 .ClickProjects().SelectProject(2).TapOrderPrints2().verifyOrderText(orderText);
 
     }
+    {
+     @Test
+       //Changing Password screen error
+        Makr_Menu_User_Account_screen();
+    }
+
 
 
 }

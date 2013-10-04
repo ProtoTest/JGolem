@@ -19,7 +19,7 @@ public class Makr_MenuBar_HeaderScreen extends appiumScreenBase {
     appElement MenuButton = new appElement("Menu", By.name("wmbHomeButton normal"));
     appElement WelcomeText = new appElement("WelcomeText", By.xpath("//window[1]/text[1]")); //hopefully there's a way to get this value
     appElement HomeButton = new appElement("HomeButton", By.name("wmbHome2Button normal"));
-    appElement ProjectsButton = new appElement("Project Archive", By.name("wmbMyProjectButton normal"));
+    appElement ProjectsButton = new appElement("Project Archive", By.xpath("//window[1]/button[3]"));
     appElement BlogButton = new appElement("Blog", By.name("wmbBlogButton normal"));
     appElement ShoppingCartButton = new appElement("ShoppingCart_Button", By.name("wmbCartButton normal"));
     appElement BetaFeedBack = new appElement("BetaFeedBack", By.name("wmbBetafeedbackButton normal"));

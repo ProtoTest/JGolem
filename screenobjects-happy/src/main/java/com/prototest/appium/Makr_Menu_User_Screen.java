@@ -20,6 +20,7 @@ public class Makr_Menu_User_Screen extends appiumScreenBase {
     //appElement AlignPrinter = new appElement("AlignPrinterButton", By.name("Align Printer")); --This seems to have been removed in 0.5.a.91
     //appElement ViewTutorial = new appElement("ViewTutorial", By.name("View Tutorial"));
     public appElement AppSettings = new appElement("AppSettings", By.name("App Settings"));
+    //No Longer Present
     public appElement InviteFriends = new appElement("InviteFriends", By.name("Invite Friends"));
     public appElement Help = new appElement("HelpClues", By.name("Help"));
     public appElement TermsandConditions = new appElement("Terms", By.name("Terms & Conditions"));
@@ -49,7 +50,7 @@ public class Makr_Menu_User_Screen extends appiumScreenBase {
         MenuElements.add(LoginButton);
         MenuElements.add(AccountSettings);
         MenuElements.add(AppSettings);
-        MenuElements.add(InviteFriends);
+        //No Longer Present MenuElements.add(InviteFriends);
         MenuElements.add(Help);
         MenuElements.add(TermsandConditions);
     }
@@ -59,7 +60,7 @@ public class Makr_Menu_User_Screen extends appiumScreenBase {
         MenuElements.add(LogoutButton);
         MenuElements.add(AccountSettings);
         MenuElements.add(AppSettings);
-        MenuElements.add(InviteFriends);
+        //No Longer Present MenuElements.add(InviteFriends);
         MenuElements.add(Help);
         MenuElements.add(TermsandConditions);
     }
@@ -75,5 +76,7 @@ public class Makr_Menu_User_Screen extends appiumScreenBase {
         AccountSettings.tap();
         return new Makr_Menu_User_Account_screen();
     }
+
+
 
 }

@@ -14,10 +14,10 @@ import java.util.List;
  * This is the login screen, displayed before the Main screen sometimes.
  */
 public class Makr_Login_Screen extends appiumScreenBase {
-    appElement usernameField = new appElement("UserNameField", By.xpath("//window[1]/textfield[4]"));
-    appElement PasswordField = new appElement("PasswordField", By.xpath("//window[1]/secure[4]"));
-    appElement LoginButton = new appElement("LoginButton", By.xpath("//window[1]/button[10]"));
-    appElement RegisterButton = new appElement("RegisterButton", By.name("REGISTER"));
+    appElement usernameField = new appElement("UserNameField", By.xpath("//window[1]/textfield[1]"));
+    appElement PasswordField = new appElement("PasswordField", By.xpath("//window[1]/secure[2]"));
+    appElement LoginButton = new appElement("LoginButton", By.xpath("//window[1]/button[5]"));
+    appElement NewUserButton = new appElement("RegisterButton", By.xpath("//window[1]/button[7]"));
     appElement FaceBookLogin = new appElement("FaceBook_Login", By.name("lgnFacebookLoginButton normal"));
     appElement ForgotPassword = new appElement("ForgotPassword", By.name("FORGOT PASSWORD"));
 
@@ -28,7 +28,7 @@ public class Makr_Login_Screen extends appiumScreenBase {
         InitList();
         VerifyContent(ScreenElements);
         //addScreenHistory(new Makr_Login_Screen());
-        AppMainWindow.tap();
+        //AppMainWindow.tap();
     }
 
     private void InitList() {
@@ -36,7 +36,7 @@ public class Makr_Login_Screen extends appiumScreenBase {
         ScreenElements.add(usernameField);
         ScreenElements.add(PasswordField);
         ScreenElements.add(LoginButton);
-        ScreenElements.add(RegisterButton);
+        ScreenElements.add(NewUserButton);
         ScreenElements.add(FaceBookLogin);
         ScreenElements.add(ForgotPassword);
 
@@ -44,7 +44,9 @@ public class Makr_Login_Screen extends appiumScreenBase {
 
     public Makr_Home_Screen emailLogin(String username, String password){
         //AppMainWindow.tap(); //this needs to be done to get the login screen elements to be visible
+
         usernameField.SendKeys(username);
+
         PasswordField.SendKeys(password);
         LoginButton.tap();
         return new Makr_Home_Screen();

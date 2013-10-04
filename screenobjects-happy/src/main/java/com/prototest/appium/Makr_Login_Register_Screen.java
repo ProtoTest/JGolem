@@ -23,7 +23,8 @@ public class Makr_Login_Register_Screen extends appiumScreenBase {
     appElement PasswordConfirm = new appElement("ConfirmPassword", By.xpath("//window[1]/secure[6]"));
     appElement PasswordHint = new appElement("PasswordHint", By.xpath("//window[1]/textfield[7]"));
     appElement LoginButton = new appElement("LoginButton", By.name("LOG IN"));
-    appElement RegisterButton = new appElement("RegisterButton", By.name("REGISTER"));
+    //Changed from Register to NewUser
+    appElement NewUserButton = new appElement("NewUserButton", By.xpath("//window[1]/button[7]"));
 
     //Terms and conditions
     appElement AcceptTerms = new appElement("AcceptTerms", By.name("ACCEPT"));
@@ -45,7 +46,7 @@ public class Makr_Login_Register_Screen extends appiumScreenBase {
         ScreenElements.add(PasswordConfirm);
         ScreenElements.add(PasswordHint);
         ScreenElements.add(LoginButton);
-        ScreenElements.add(RegisterButton);
+        ScreenElements.add(NewUserButton);
     }
 
     public Makr_Login_Screen returnToLogin(){
@@ -60,7 +61,7 @@ public class Makr_Login_Register_Screen extends appiumScreenBase {
         Password.SendKeys(pass);
         PasswordConfirm.SendKeys(pass);
         PasswordHint.SendKeys(hint);
-        RegisterButton.tap();
+        NewUserButton.tap();
         AcceptTerms.tap();
         return new Makr_Home_Screen();
     }

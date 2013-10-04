@@ -87,6 +87,7 @@ public class appElement {
     public void SendKeys(String text){
         setAppElement();
         element.sendKeys(text);
+
     }
     public String getText(){
         return element.getText();
