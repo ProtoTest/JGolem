@@ -19,13 +19,5 @@ public class Regression extends appiumTestBase {
         Makr_Home_Screen.StartMaker().OpenUserMenu().Login().emailLogin("chancock@prototest.com","happy!")
                 .ClickProjects().SelectProject(2).TapOrderPrints2().verifyOrderText(orderText);
 
-    }
-    {
-     @Test
-       //Changing Password screen error
-        Makr_Menu_User_Account_screen();
-    }
-
-
-
+}
 }
