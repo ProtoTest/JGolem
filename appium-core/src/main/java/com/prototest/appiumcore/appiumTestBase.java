@@ -12,20 +12,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
 import java.net.URL;
 
 
 public class appiumTestBase {
     private static  WebDriver driver;
     private appElement window;
+    private appiumTestLog.logger logFile;
 
     @BeforeTest
     public void setUp() throws Exception {
         System.out.println("Running Setup");
+        logFile = new appiumTestLog.logger();
         launchBrowser();
     }
 
@@ -38,7 +41,7 @@ public class appiumTestBase {
 
         //capabilities.setCapability("app", app.getAbsolutePath());
 
-        driver = new RemoteWebDriver(new URL("http://192.168.1.130:4723/wd/hub"), capabilities);
+        driver = new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
         window = new appElement("Main_Window", By.xpath("//window[1]"));
     }
 
@@ -46,11 +49,25 @@ public class appiumTestBase {
         return driver;
     }
 
+    @AfterMethod
+    private void AddResultToLog(ITestResult result){
+        logFile.AddLog("Test Method Name: " + result.getMethod().getMethodName() + " Result: " + result.isSuccess());
+    }
 
 
 
     @AfterTest
     private void TearDown(){
+        //get here bitch
         driver.quit();
+        logFile.printResults();
     }
+
+    @AfterClass
+    private void dosomething(ITestResult result){
+        logFile.AddLog("Test Method Name: " + result.getMethod().getMethodName() + " Result: " + result.isSuccess());
+        logFile.printResults();
+    }
+
+
 }

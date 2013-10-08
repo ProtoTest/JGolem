@@ -68,6 +68,8 @@ public class Makr_Home_Screen extends Makr_MenuBar_HeaderScreen {
     }
 
     public Makr_Projects_Screen ClickProjects(){
+
+        ProjectsButton.waitforElementPresent();
         ProjectsButton.tap();
         return new Makr_Projects_Screen();
     }

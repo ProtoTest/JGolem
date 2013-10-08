@@ -46,9 +46,10 @@ public class Makr_Login_Screen extends appiumScreenBase {
         //AppMainWindow.tap(); //this needs to be done to get the login screen elements to be visible
 
         usernameField.SendKeys(username);
-
         PasswordField.SendKeys(password);
         LoginButton.tap();
+
+
         return new Makr_Home_Screen();
     }
 

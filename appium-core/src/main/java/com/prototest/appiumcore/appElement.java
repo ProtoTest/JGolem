@@ -33,6 +33,7 @@ public class appElement {
 
     public void setAppElement(){
         element = driver.findElement(by);
+
     }
 
     public String GetElementName(){
@@ -61,6 +62,22 @@ public class appElement {
         }
         return exists;
 
+    }
+
+    public void waitforElementPresent(){
+        boolean present = false;
+
+        while(!present){
+            System.out.println("Trying to find element:" + name + " with locator: " + by.toString());
+            if(!driver.findElements(by).isEmpty()){
+                present = true;
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+        }
     }
 
     public void AcceptAlert(){
