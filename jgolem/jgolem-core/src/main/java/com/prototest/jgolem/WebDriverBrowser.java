@@ -17,12 +17,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverBrowser {
-    public enum Browser {Firefox, Chrome, IE, Safari, Android, Iphone};
+    public enum Browser {Firefox, Chrome, IE, Safari, Android, Iphone}
+
+    ;
     private WebDriver driver;
     private static Logger Log = LogManager.getLogger(WebDriverBrowser.class.getName());
 
     public WebDriver launchBrowser(Browser browser) {
-        switch(browser) {
+        switch (browser) {
             case Chrome:
                 driver = startChromeBrowser();
                 break;
@@ -40,16 +42,13 @@ public class WebDriverBrowser {
 
         Log.debug("launchBrowser(): Using browser = " + browser.toString());
         driver.manage().deleteAllCookies();
-         EventFiringWebDriver eDriver = new EventFiringWebDriver(driver);
+        EventFiringWebDriver eDriver = new EventFiringWebDriver(driver);
         return WebDriverEvents.RegisterEvents(eDriver);
     }
 
 
-
-    public DesiredCapabilities GetCapabilitiesForBrowser(Browser browser)
-    {
-        switch (browser)
-        {
+    public DesiredCapabilities GetCapabilitiesForBrowser(Browser browser) {
+        switch (browser) {
             case IE:
                 return DesiredCapabilities.internetExplorer();
             case Chrome:
@@ -64,11 +63,10 @@ public class WebDriverBrowser {
         }
     }
 
-    public WebDriver LaunchRemoteBrowser(Browser browser, String host)
-    {
+    public WebDriver LaunchRemoteBrowser(Browser browser, String host) {
         DesiredCapabilities desiredCapabilities = GetCapabilitiesForBrowser(browser);
         try {
-            URL remoteAddress = new URL("http://"+ host +":4444/wd/hub");
+            URL remoteAddress = new URL("http://" + host + ":4444/wd/hub");
             //return new EventedWebDriver(new RemoteWebDriver(remoteAddress, desiredCapabilities)).driver;
         } catch (MalformedURLException e) {
             Log.error(e.getMessage());
@@ -76,8 +74,7 @@ public class WebDriverBrowser {
         return null;
     }
 
-    public WebDriver LaunchAppDriver(String appPath, String package_str, String activity)
-    {
+    public WebDriver LaunchAppDriver(String appPath, String package_str, String activity) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
         capabilities.setCapability("device", "Android");
@@ -96,7 +93,7 @@ public class WebDriverBrowser {
     }
 
     private WebDriver startIEBrowser() {
-        DesiredCapabilities ieCapabilities =  DesiredCapabilities.internetExplorer();
+        DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
         ieCapabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
         ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
         return new InternetExplorerDriver(ieCapabilities);

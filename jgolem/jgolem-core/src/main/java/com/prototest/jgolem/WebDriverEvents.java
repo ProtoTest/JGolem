@@ -8,8 +8,7 @@ import org.openqa.selenium.support.events.WebDriverEventListener;
 
 public class WebDriverEvents {
 
-    public static EventFiringWebDriver RegisterEvents(EventFiringWebDriver driver)
-    {
+    public static EventFiringWebDriver RegisterEvents(EventFiringWebDriver driver) {
         driver.register(new WebDriverEventListener() {
             @Override
             public void beforeNavigateTo(String s, WebDriver webDriver) {

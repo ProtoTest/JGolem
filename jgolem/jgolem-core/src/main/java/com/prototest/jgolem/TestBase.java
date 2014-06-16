@@ -2,9 +2,12 @@ package com.prototest.jgolem;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.annotations.*;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Guice;
 
+@Guice(modules = {})
 public class TestBase {
     private static WebDriver driver;
     private static Logger Log = LogManager.getLogger(TestBase.class.getName());

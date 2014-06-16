@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 /**
  * Config (Configuration settings) class. Used to load up jgolem and test specific configuration
- *  values from a file. Uses apache-commons library to facilitate property management.
- *
- *  Example usage: Config.Settings.RuntimeSettings.launchBrowser
+ * values from a file. Uses apache-commons library to facilitate property management.
+ * <p/>
+ * Example usage: Config.Settings.RuntimeSettings.launchBrowser
  *
  * @author Matt Siwiec
  */
@@ -32,41 +32,38 @@ public final class Config {
     }
 
     /**
-     *  Returns the configuration file value for 'key' passed in. If the 'key' is not found, then 'default_value'
-     *  is returned.
+     * Returns the configuration file value for 'key' passed in. If the 'key' is not found, then 'default_value'
+     * is returned.
      *
-     * @param key               Configuration file key string
-     * @param default_value     Default value returned, cannot be null
+     * @param key           Configuration file key string
+     * @param default_value Default value returned, cannot be null
      * @return <T>              Generic type value defined in configuration file,
-     *                          or default value, if not found in config file.
+     *         or default value, if not found in config file.
      * @throws NullPointerException
-     * @throws IllegalArgumentException
-     *
-     * <p>
-     *     Note: You cannot use primitive data types (i.e. int, boolean, etc.) with generics. When defining
-     *           variables to store this config data use the object instead of the primitive
-     *           (i.e. Boolean instead of boolean).
-     *      Suppressing warning for the cast to generic type T.
-     * </p>
+     * @throws IllegalArgumentException <p>
+     *                                  Note: You cannot use primitive data types (i.e. int, boolean, etc.) with generics. When defining
+     *                                  variables to store this config data use the object instead of the primitive
+     *                                  (i.e. Boolean instead of boolean).
+     *                                  Suppressing warning for the cast to generic type T.
+     *                                  </p>
      */
     @SuppressWarnings("unchecked")
     public static <T> T getConfigValue(String key, T default_value) throws NullPointerException, IllegalArgumentException {
         T ret_val = default_value;
 
-        if(key == null) throw new NullPointerException("param 'key' can not be null!");
-        if(default_value == null) throw new NullPointerException("param 'default_value' can not be null!");
+        if (key == null) throw new NullPointerException("param 'key' can not be null!");
+        if (default_value == null) throw new NullPointerException("param 'default_value' can not be null!");
 
-        if(config != null) {
-            if(default_value instanceof Integer) {
-                ret_val = (T)config.getInteger(key, (Integer)default_value);
-            } else if(default_value instanceof String) {
-                ret_val = (T)config.getString(key);
-            } else if(default_value instanceof Boolean) {
-                ret_val = (T)config.getBoolean(key, (Boolean)default_value);
-            } else if(default_value instanceof String[]) {
-                ret_val = (T)config.getStringArray(key);
-            }
-            else {
+        if (config != null) {
+            if (default_value instanceof Integer) {
+                ret_val = (T) config.getInteger(key, (Integer) default_value);
+            } else if (default_value instanceof String) {
+                ret_val = (T) config.getString(key);
+            } else if (default_value instanceof Boolean) {
+                ret_val = (T) config.getBoolean(key, (Boolean) default_value);
+            } else if (default_value instanceof String[]) {
+                ret_val = (T) config.getStringArray(key);
+            } else {
                 throw new IllegalArgumentException(default_value.getClass() + " is not supported by this function");
             }
         }
@@ -85,11 +82,11 @@ public final class Config {
             public static Integer testTimeoutMin;
             public static Integer elementTimeoutSec;
             public static Integer pageTimeoutSec;
-            public static String  environmentURL;
+            public static String environmentURL;
             public static Integer degreeOfParallelism;
             public static Integer commandDelayMs;
             public static Boolean runOnRemoteHost;
-            public static String  hostIP;
+            public static String hostIP;
 
             // static class constructor
             static {
@@ -115,10 +112,10 @@ public final class Config {
                 ArrayList<WebDriverBrowser.Browser> browsers = new ArrayList<WebDriverBrowser.Browser>();
                 String[] browserConfigList = {};
                 browserConfigList = Config.getConfigValue("Browsers", browserConfigList);
-                if(browserConfigList != null) {
-                    for(String browser_str: browserConfigList) {
+                if (browserConfigList != null) {
+                    for (String browser_str : browserConfigList) {
                         // do not test on IE if the OS is not Windows
-                        if(browser_str.equalsIgnoreCase("IE") && !System.getProperty("os.name").startsWith("Windows")) {
+                        if (browser_str.equalsIgnoreCase("IE") && !System.getProperty("os.name").startsWith("Windows")) {
                             continue;
                         }
 

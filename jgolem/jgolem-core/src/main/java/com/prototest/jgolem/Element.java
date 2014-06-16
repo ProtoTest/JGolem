@@ -1,7 +1,6 @@
 
 package com.prototest.jgolem;
 
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 //Element class can be instantiated any time but only looks for the element on the page when a function is called
-public class Element implements WebElement{
+public class Element implements WebElement {
     private By by;
     private WebDriver driver;
     private String name;
@@ -23,17 +22,16 @@ public class Element implements WebElement{
         this.driver = TestBase.getDriver();
     }
 
-    public Verification Verify(int timeoutSec){
-        return new Verification(this,timeoutSec);
+    public Verification Verify(int timeoutSec) {
+        return new Verification(this, timeoutSec);
     }
 
-    public By getBy(){
+    public By getBy() {
         return by;
     }
 
-    public WebElement getElement()
-    {
-            return driver.findElement(this.by);
+    public WebElement getElement() {
+        return driver.findElement(this.by);
     }
 
     public Point getLocation() {
@@ -55,8 +53,7 @@ public class Element implements WebElement{
     public String getAttribute(String attribute) {
         try {
             return getElement().getAttribute(attribute);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Failed to get attribute: " + attribute);
             e.printStackTrace();
         }
@@ -81,7 +78,7 @@ public class Element implements WebElement{
     }
 
     public Element setCheckbox(boolean checked) {
-        if(getElement().isSelected() != checked) {
+        if (getElement().isSelected() != checked) {
             getElement().click();
         }
 
@@ -100,13 +97,13 @@ public class Element implements WebElement{
 
     @Override
     public boolean isDisplayed() {
-        if ((isPresent())&&(getElement().isDisplayed())) return true;
+        if ((isPresent()) && (getElement().isDisplayed())) return true;
         else
             return false;
     }
 
     public boolean isPresent() {
-        if(driver.findElements(by).size()>0)
+        if (driver.findElements(by).size() > 0)
             return true;
         else
             return false;
