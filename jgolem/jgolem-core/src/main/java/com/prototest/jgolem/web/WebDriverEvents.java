@@ -1,4 +1,4 @@
-package com.prototest.jgolem;
+package com.prototest.jgolem.web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

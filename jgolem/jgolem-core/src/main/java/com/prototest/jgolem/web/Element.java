@@ -1,6 +1,8 @@
+package com.prototest.jgolem.web;
 
-package com.prototest.jgolem;
-
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import com.prototest.jgolem.core.Verification;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,20 +11,29 @@ import java.util.List;
 
 //Element class can be instantiated any time but only looks for the element on the page when a function is called
 public class Element implements WebElement {
+    @Inject
+    static Injector injector;
+    @Inject
+    private WebDriverFactory driverFactory;
     private By by;
-    private WebDriver driver;
     private String name;
     private WebElement element;
-    public Verification Verify;
+
+    //public Verification Verify;
 
     public Element(String name, By by) {
+        injector.injectMembers(this);
         this.name = name;
         this.by = by;
-        this.Verify = new Verification();
-        this.driver = TestBase.getDriver();
+        // TODO use config
+        //this.driver = TestBase.getDriver();
     }
 
-    public Verification Verify(int timeoutSec) {
+    public Verification verify() {
+        return verify(10);
+    }
+
+    public Verification verify(int timeoutSec) {
         return new Verification(this, timeoutSec);
     }
 
@@ -31,7 +42,7 @@ public class Element implements WebElement {
     }
 
     public WebElement getElement() {
-        return driver.findElement(this.by);
+        return driverFactory.get().findElement(this.by);
     }
 
     public Point getLocation() {
@@ -103,7 +114,7 @@ public class Element implements WebElement {
     }
 
     public boolean isPresent() {
-        if (driver.findElements(by).size() > 0)
+        if (driverFactory.get().findElements(by).size() > 0)
             return true;
         else
             return false;
@@ -137,7 +148,7 @@ public class Element implements WebElement {
     }
 
     public Element waitUntilVisible() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driverFactory.get(), 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return this;
     }

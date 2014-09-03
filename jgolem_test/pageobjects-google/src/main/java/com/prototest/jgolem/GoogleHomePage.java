@@ -1,8 +1,11 @@
 package com.prototest.jgolem;
 
+import com.prototest.jgolem.web.BasePage;
+import com.prototest.jgolem.web.Element;
+import com.prototest.jgolem.web.WebBrowserTestBase;
 import org.openqa.selenium.By;
 
-public class GoogleHomePage {
+public class GoogleHomePage extends BasePage {
 
     Element searchField = new Element("SearchField", By.name("q"));
     //Element googleLogo = new Element("GoogleLogo", By.id("hplogo"));
@@ -13,9 +16,9 @@ public class GoogleHomePage {
 
     public static GoogleHomePage OpenGoogle()
     {
-
-        TestBase.getDriver().navigate().to("http://www.google.com/");
-        return new GoogleHomePage();
+        GoogleHomePage homePage = new GoogleHomePage();
+        homePage.getDriver().navigate().to("http://www.google.com/");
+        return homePage;
     }
 
     public GoogleResultsPage SearchFor(String text)

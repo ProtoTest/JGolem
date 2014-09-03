@@ -1,7 +1,10 @@
-package com.prototest.jgolem;
+package com.prototest.jgolem.core;
+
+import com.prototest.jgolem.web.Element;
+
+import java.util.function.Function;
 
 public class Verification {
-    public Not Not;
     protected Element element;
     protected boolean isTrue;
     protected boolean condition;
@@ -9,18 +12,20 @@ public class Verification {
     protected String conditional;
     protected int timeout;
 
-    public Verification() {
+    private Function<Boolean, Boolean> validation = (result -> result);
+
+    protected Verification() {
+
     }
 
     public Verification(Element element, int timeout) {
         this.element = element;
-        this.Not = new Not(element);
         this.conditional = " not";
         this.timeout = timeout;
     }
 
     protected void ValidateCondition() {
-        if (!this.condition) {
+        if (!validation.apply(condition)) {
             System.out.println("Verification Failed : " + this.message);
         }
 
@@ -69,20 +74,10 @@ public class Verification {
         return this;
     }
 
-
-    protected class Not extends Verification {
-        private Not(Element element) {
-
-            this.element = element;
-            this.conditional = "";
-        }
-
-        @Override
-        protected void ValidateCondition() {
-            if (this.condition) {
-                System.out.println("Verification Failed : " + this.message);
-            }
-        }
-
+    public Verification Not() {
+        this.conditional = "";
+        // Invert the result
+        this.validation = (result -> !result);
+        return this;
     }
 }
