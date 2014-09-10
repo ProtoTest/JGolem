@@ -17,9 +17,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverBrowser {
-    public enum Browser {Firefox, Chrome, IE, Safari, Android, Iphone}
+    public enum Browser {Firefox, Chrome, IE, Safari, Android, Iphone
+//        public static Browser fromString(String browser) {
+//            browser = browser.trim().toLowerCase();
+//            switch (browser) {
+//                case Firefox.name().to
+//            }
+//        }
+    }
 
-    ;
     private WebDriver driver;
     private static Logger Log = LogManager.getLogger(WebDriverBrowser.class.getName());
 

@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 public class WebDriverFactory {
     @Inject
-    Injector injector;
+    WebConfig config;
 
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 

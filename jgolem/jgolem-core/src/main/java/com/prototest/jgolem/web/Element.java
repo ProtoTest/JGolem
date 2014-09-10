@@ -2,6 +2,7 @@ package com.prototest.jgolem.web;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import com.prototest.jgolem.core.AutoInjection;
 import com.prototest.jgolem.core.Verification;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,11 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 //Element class can be instantiated any time but only looks for the element on the page when a function is called
-public class Element implements WebElement {
-    @Inject
-    static Injector injector;
-    @Inject
-    private WebDriverFactory driverFactory;
+public class Element extends WebAutoInjection implements WebElement {
+
     private By by;
     private String name;
     private WebElement element;
@@ -22,7 +20,6 @@ public class Element implements WebElement {
     //public Verification Verify;
 
     public Element(String name, By by) {
-        injector.injectMembers(this);
         this.name = name;
         this.by = by;
         // TODO use config
@@ -42,7 +39,7 @@ public class Element implements WebElement {
     }
 
     public WebElement getElement() {
-        return driverFactory.get().findElement(this.by);
+        return driver.get().findElement(this.by);
     }
 
     public Point getLocation() {
@@ -114,7 +111,7 @@ public class Element implements WebElement {
     }
 
     public boolean isPresent() {
-        if (driverFactory.get().findElements(by).size() > 0)
+        if (driver.get().findElements(by).size() > 0)
             return true;
         else
             return false;
@@ -148,7 +145,7 @@ public class Element implements WebElement {
     }
 
     public Element waitUntilVisible() {
-        WebDriverWait wait = new WebDriverWait(driverFactory.get(), 10);
+        WebDriverWait wait = new WebDriverWait(driver.get(), 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return this;
     }
