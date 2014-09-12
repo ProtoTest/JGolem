@@ -13,11 +13,11 @@
     <packaging>pom</packaging>
 
     <name>JGolem</name>
-    <description>A mavenised Selenium 2 (WebDriver) test framework</description>
+    <description>A Selenium 2 test framework</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <versions.selenium>2.42.2</versions.selenium>
+        <versions.selenium>2.43.0</versions.selenium>
         <versions.commons-configuration>1.7</versions.commons-configuration>
         <versions.testng>6.8.7</versions.testng>
         <versions.log4j>2.0-beta8</versions.log4j>

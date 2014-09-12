@@ -22,20 +22,9 @@ public class WebDriverFactory {
 
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public enum Browser {
-        Firefox, Chrome, IE, Safari, Android, Iphone;
 
-        public static Browser fromString(String name) {
-            for (Browser browser : values()) {
-                if (browser.name().compareToIgnoreCase(name) == 0) {
-                    return browser;
-                }
-            }
-            return null;
-        }
-    }
 
-    public WebDriver build(Browser browser) {
+    public WebDriver build(WebBrowser browser) {
         if (driver.get() == null) {
             switch (browser) {
                 case Chrome:

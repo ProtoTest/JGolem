@@ -10,10 +10,12 @@ public class WebBrowserTestBase extends TestBase {
     @Inject
     private WebDriverFactory driver;
 
+    @Inject
+    private WebConfig config;
+
     @Override
     protected void internalTestSetup() {
-        // TODO: replace with configuration
-        driver.build(WebDriverFactory.Browser.Chrome);
+        driver.build(config.defaultBrowser);
     }
 
     @Override

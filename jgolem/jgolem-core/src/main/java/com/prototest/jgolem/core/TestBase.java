@@ -1,10 +1,5 @@
 package com.prototest.jgolem.core;
 
-import com.google.inject.Inject;
-import com.prototest.jgolem.web.WebDriverBrowser;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 public abstract class TestBase {

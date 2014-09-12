@@ -1,7 +1,7 @@
 package com.prototest.jgolem.web;
 
 import com.google.inject.AbstractModule;
-import com.prototest.jgolem.core.Config;
+import com.prototest.jgolem.core.config.Config;
 import com.prototest.jgolem.core.CoreModule;
 
 

@@ -14,7 +14,7 @@
 //
 //
 //
-//        for(WebDriverBrowser.Browser browser : Config.Settings.RuntimeSettings.browsers) {
+//        for(WebDriverBrowserManager.Browser browser : Config.Settings.RuntimeSettings.browsers) {
 //            System.out.println("Browser: " + browser.toString());
 //        }
 //
