@@ -20,23 +20,16 @@
         <versions.selenium>2.43.0</versions.selenium>
         <versions.commons-configuration>1.7</versions.commons-configuration>
         <versions.testng>6.8.7</versions.testng>
-        <versions.log4j>2.0-beta8</versions.log4j>
-        <versions.logback>1</versions.logback>
+        <versions.logback>1.1.2</versions.logback>
     </properties>
 
 
-    <!-- Apache Log4J v2 -->
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${versions.log4j}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${versions.log4j}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${versions.logback}</version>
         </dependency>
     </dependencies>
 
