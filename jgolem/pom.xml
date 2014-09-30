@@ -76,13 +76,6 @@
                 <groupId>org.uncommons</groupId>
                 <artifactId>reportng</artifactId>
                 <version>${versions.reportng}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.testng</groupId>
-                        <artifactId>testng</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
