@@ -1,15 +1,28 @@
 package com.prototest.jgolem.core;
 
-import ch.qos.logback.classic.Logger;
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
-import ch.qos.logback.classic.spi.ILoggingEvent;
-import ch.qos.logback.core.FileAppender;
-import org.slf4j.LoggerFactory;
-import org.testng.annotations.*;
+import com.prototest.jgolem.core.logging.internal.GolemLogEventFactory;
+import com.prototest.jgolem.core.logging.internal.GolemLoggerConfigurationFactory;
+import org.apache.logging.log4j.core.config.ConfigurationFactory;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 public abstract class TestBase {
 
+    static {
+        configureLogging();
+    }
+
+    private static ThreadLocal<String> testName = new ThreadLocal<>();
+
+    private static void configureLogging() {
+        System.setProperty("Log4jLogEventFactory", GolemLogEventFactory.class.getName());
+        ConfigurationFactory.setConfigurationFactory(new GolemLoggerConfigurationFactory());
+
+
+    }
     @AfterTest
     public void tearDown() throws Exception {
         //Log.info("Running tearDown() after test");
@@ -17,17 +30,29 @@ public abstract class TestBase {
     }
 
     @BeforeTest
-    public void setUp() throws Exception {
+    public void setUp(ITestContext context) throws Exception {
         //Log.info("Running setUp before test");
+        setTestName(context.getName());
         internalTestSetup();
+    }
+
+    private void setTestName(String name) {
+        testName.set(name);
+    }
+
+    private void clearTestName() {
+        testName.remove();
+    }
+
+    public static String getCurrentTestName() {
+        return testName.get();
     }
 
     @BeforeSuite
     public void suiteSetup() throws Exception {
-        configureLogback();
+        configureLogging();
         internalSuiteSetup();
     }
-
 
 
     @AfterSuite
@@ -69,19 +94,6 @@ public abstract class TestBase {
 
     }
 
-    private void configureLogback() {
-        LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
-        Logger rootLogger = loggerContext.getLogger(Logger.ROOT_LOGGER_NAME);
-        FileAppender fileAppender = new FileAppender<ILoggingEvent>();
-        fileAppender.setFile("log.log");
-        PatternLayoutEncoder pl = new PatternLayoutEncoder();
-        pl.setContext(loggerContext);
-        pl.setPattern("%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n");
-        pl.start();
-        //fileAppender.setPa(pl);
-        fileAppender.setContext(loggerContext);
-        fileAppender.start();
-        rootLogger.addAppender(fileAppender);
-    }
+
 
 }

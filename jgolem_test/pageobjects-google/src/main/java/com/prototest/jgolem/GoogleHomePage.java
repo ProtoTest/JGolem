@@ -23,6 +23,7 @@ public class GoogleHomePage extends BasePage {
 
     public GoogleResultsPage SearchFor(String text)
     {
+        logger.info("Searching Google for ({})", text);
         searchField.setText(text);
         searchField.submit();
         return new GoogleResultsPage();

@@ -13,8 +13,8 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>com.prototest.jgolem</groupId>
         <artifactId>jgolem-project-parent</artifactId>
+        <groupId>com.prototest.jgolem</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
