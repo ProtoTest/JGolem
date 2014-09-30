@@ -59,12 +59,12 @@ public class GolemLoggerConfigurationFactory extends ConfigurationFactory {
             addAppender(consoleAppender);
 
 
-            JsonLayout jsonLayout = (JsonLayout) JsonLayout.createDefaultLayout();
-            FileAppender jsonFileAppender = FileAppender.createAppender("log.json", "true", "true", "TestNG", "true", "false", "true", null, jsonLayout, null, "false", "false", this);
-            jsonFileAppender.start();
-            addAppender(jsonFileAppender);
+//            JsonLayout jsonLayout = (JsonLayout) JsonLayout.createDefaultLayout();
+//            FileAppender jsonFileAppender = FileAppender.createAppender("log.json", "true", "true", "TestNG", "true", "false", "true", null, jsonLayout, null, "false", "false", this);
+//            jsonFileAppender.start();
+//            addAppender(jsonFileAppender);
             final LoggerConfig root = getRootLogger();
-            root.addAppender(jsonFileAppender, null, null);
+//            root.addAppender(jsonFileAppender, null, null);
             root.addAppender(consoleAppender, null, null);
             root.setLevel(Level.INFO);
         }
