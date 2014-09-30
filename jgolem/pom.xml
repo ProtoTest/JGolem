@@ -32,12 +32,12 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Log4J -->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
-                <version>2.0.2</version>
+                <version>${versions.log4j}</version>
             </dependency>
+
             <!-- Jackson-Core -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
