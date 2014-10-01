@@ -28,13 +28,13 @@ public class GoogleResultsPage {
 
     public GoogleResultsPage VerifyResult(String text)
     {
-        searchResult(text).verify(10).IsVisible();
+        searchResult(text).verify(10).isVisible();
         return new GoogleResultsPage();
     }
 
     public GoogleResultsPage VerifyResultNotVisible(String text)
     {
-        searchResult(text).verify(10).Not().IsVisible();
+        searchResult(text).verify(10).not().isVisible();
         return new GoogleResultsPage();
     }
 
