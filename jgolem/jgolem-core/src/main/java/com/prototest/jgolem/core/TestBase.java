@@ -2,12 +2,11 @@ package com.prototest.jgolem.core;
 
 import com.prototest.jgolem.core.logging.internal.GolemLogEventFactory;
 import com.prototest.jgolem.core.logging.internal.GolemLoggerConfigurationFactory;
+import com.prototest.jgolem.core.logging.internal.HTMLogger;
 import org.apache.logging.log4j.core.config.ConfigurationFactory;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
+
 
 public abstract class TestBase {
 
@@ -20,8 +19,7 @@ public abstract class TestBase {
     private static void configureLogging() {
         System.setProperty("Log4jLogEventFactory", GolemLogEventFactory.class.getName());
         ConfigurationFactory.setConfigurationFactory(new GolemLoggerConfigurationFactory());
-
-
+        //TODO InitHTML Logging?
     }
     @AfterTest
     public void tearDown() throws Exception {
@@ -91,7 +89,7 @@ public abstract class TestBase {
     }
 
     protected void internalTestTeardown() {
-
+        //TODO -- Do ReportNG Stuff here
     }
 
 

@@ -6,11 +6,13 @@
 
     <artifactId>jgolem-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <parent>
         <groupId>com.prototest.jgolem</groupId>
         <artifactId>jgolem-project-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <modules>
         <module>jgolem-core</module>
     </modules>
@@ -24,61 +26,83 @@
         <versions.selenium>2.43.0</versions.selenium>
         <versions.commons-configuration>1.7</versions.commons-configuration>
         <versions.testng>6.8.7</versions.testng>
+        <versions.reportng>1.1.4</versions.reportng>
         <versions.log4j>2.0.2</versions.log4j>
+        <versions.jacksonCore>2.2.2</versions.jacksonCore>
+        <versions.guice>3.0</versions.guice>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Log4j -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${versions.log4j}</version>
+            </dependency>
+            <!-- Jackson-Core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>#{versions.jacksonCore}</version>
+            </dependency>
             <!-- Selenium 2 -->
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-java</artifactId>
                 <version>${versions.selenium}</version>
             </dependency>
-
             <!-- Apache commons configuration settings -->
             <dependency>
                 <groupId>commons-configuration</groupId>
                 <artifactId>commons-configuration</artifactId>
                 <version>${versions.commons-configuration}</version>
             </dependency>
-
+            <!-- Google Guice -->
+            <dependency>
+                <groupId>com.google.inject</groupId>
+                <artifactId>guice</artifactId>
+                <version>${versions.guice}</version>
+            </dependency>
             <!-- TestNG -->
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${versions.testng}</version>
             </dependency>
+            <!-- ReportNG -->
+            <dependency>
+                <groupId>org.uncommons</groupId>
+                <artifactId>reportng</artifactId>
+                <version>${versions.reportng}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+    <!-- configure the surefire plugin to use ReportNG listeners -->
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.16</version>
+            <configuration>
+                <systemPropertyVariables>
+                    <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
+                </systemPropertyVariables>
+                <properties>
+                    <property>
+                        <name>usedefaultlisteners</name>
+                        <value>false</value>
+                    </property>
+                    <property>
+                        <name>listener</name>
+                        <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
+                    </property>
+                </properties>
+                <reportsDirectory>${project.basedir}/target/</reportsDirectory>
+            </configuration>
+        </plugin>
+    </plugins>
+    </build>
 </project>
