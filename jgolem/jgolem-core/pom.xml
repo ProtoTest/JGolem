@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.uncommons</groupId>
             <artifactId>reportng</artifactId>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
             <exclusions>
                 <exclusion>
                     <groupId>org.testng</groupId>
