@@ -1,37 +1,17 @@
 package com.prototest.jgolem.web;
 
+import com.prototest.jgolem.core.AbstractElementValidationImpl;
 import com.prototest.jgolem.core.Validation;
-import com.prototest.jgolem.core.Verifications;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.function.Function;
 
-public class ElementValidation implements Validation {
-    protected Element element;
-    protected boolean isTrue;
-    protected boolean condition;
-    protected String message;
-    protected String conditional;
-    protected int timeout;
+public class ElementValidation extends AbstractElementValidationImpl {
 
     private Logger logger = LogManager.getLogger(getClass());
-    private Function<Boolean, Boolean> validation = (result -> result);
 
     public ElementValidation(Element element, int timeout) {
-        this.element = element;
-        this.conditional = " not";
-        this.timeout = timeout;
-    }
-
-    protected void validateCondition() {
-        boolean passed = true;
-
-        if (!validation.apply(condition)) {
-            passed = false;
-        }
-
-        Verifications.addVerification(this.message, passed);
+        super(element,timeout);
     }
 
     protected boolean waitForElement() {
@@ -87,14 +67,6 @@ public class ElementValidation implements Validation {
             this.message = String.format("Element (%s) is%s present", element.getBy().toString(), conditional);
         }
         validateCondition();
-        return this;
-    }
-
-    @Override
-    public Validation not() {
-        this.conditional = "";
-        // Invert the result
-        this.validation = (result -> !result);
         return this;
     }
 }
