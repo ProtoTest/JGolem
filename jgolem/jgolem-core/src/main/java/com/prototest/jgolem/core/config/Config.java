@@ -1,15 +1,12 @@
 package com.prototest.jgolem.core.config;
 
-import com.prototest.jgolem.core.*;
 import org.apache.commons.configuration.*;
-import org.apache.commons.configuration.PropertyConverter;
 
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 
 public abstract class Config {
 

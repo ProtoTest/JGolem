@@ -10,8 +10,11 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.layout.JsonLayout;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 
+import java.io.File;
 import java.io.Serializable;
 import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Plugin(category = "ConfigurationFactory", name = "Log4j2ConfigurationFactory")
@@ -46,8 +49,30 @@ public class GolemLoggerConfigurationFactory extends ConfigurationFactory {
          * The default Pattern used for the default Layout.
          */
         public static final String DEFAULT_PATTERN = "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n";
+
+        public static final File OUTPUT_DIR;
+
+        static {
+            // Setup timestamped report directory.
+            SimpleDateFormat format = new SimpleDateFormat("yyyy_MM_dd__HH_mm");
+            File parentDir = new File("report");
+            OUTPUT_DIR = new File(parentDir, format.format(new Date()));
+            if (!parentDir.exists()) {
+                parentDir.mkdir();
+            } else if (parentDir.isFile()) {
+                parentDir.delete();
+                parentDir.mkdir();
+            }
+            if (OUTPUT_DIR.exists()) {
+                OUTPUT_DIR.delete();
+            }
+            OUTPUT_DIR.mkdir();
+        }
+
         public GolemLog4jConfiguration() {
             super(ConfigurationSource.NULL_SOURCE);
+
+
             setName(DEFAULT_NAME);
             final Layout<? extends Serializable> layout = PatternLayout.newBuilder()
                     .withPattern(DEFAULT_PATTERN)
@@ -59,12 +84,12 @@ public class GolemLoggerConfigurationFactory extends ConfigurationFactory {
             addAppender(consoleAppender);
 
 
-//            JsonLayout jsonLayout = (JsonLayout) JsonLayout.createDefaultLayout();
-//            FileAppender jsonFileAppender = FileAppender.createAppender("log.json", "true", "true", "TestNG", "true", "false", "true", null, jsonLayout, null, "false", "false", this);
-//            jsonFileAppender.start();
-//            addAppender(jsonFileAppender);
+            JsonLayout jsonLayout = (JsonLayout) JsonLayout.createLayout(true, true, true, false, null);
+            FileAppender jsonFileAppender = FileAppender.createAppender(new File(OUTPUT_DIR, "log.json").getAbsolutePath(), "true", "true", "TestNG", "true", "false", "true", null, jsonLayout, null, "false", "false", this);
+            jsonFileAppender.start();
+            addAppender(jsonFileAppender);
             final LoggerConfig root = getRootLogger();
-//            root.addAppender(jsonFileAppender, null, null);
+            root.addAppender(jsonFileAppender, null, null);
             root.addAppender(consoleAppender, null, null);
             root.setLevel(Level.INFO);
         }

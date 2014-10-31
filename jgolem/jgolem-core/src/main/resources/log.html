@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="reportApp">
+<head>
+  <meta charset="UTF-8">
+  <title>The Report</title>
+  <script src="angular.js"></script>
+  <script src="controllers.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body ng-controller="LogLinesCtrl">
+  <div id="left-div">
+    <nav>
+      <ul>
+        <li ng-repeat="testName in testNames">
+          <a href="" ng-click="setLogFilter(testName)">{{testName}}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div id="content-div">
+    <h1>Test Results</h1>
+    <ul>
+      <li ng-repeat="line in testLogs[logFilter]" class="log-line {{line.level}}">
+        <span><b>{{line.level}}</b> - {{line.message}}</span>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

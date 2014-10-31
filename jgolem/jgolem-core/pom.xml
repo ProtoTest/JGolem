@@ -19,6 +19,16 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.webbitserver</groupId>
+                    <artifactId>webbit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-htmlunit-driver</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Apache commons configuration settings -->

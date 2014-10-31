@@ -1,0 +1,31 @@
+li.log-line {
+    list-style: none;
+}
+
+.INFO {
+
+}
+
+.WARN {
+    background: yellow;
+}
+
+.ERROR {
+    background: red;
+}
+
+#left-div {
+    width: 200px;
+    float: left;
+    position: fixed;
+}
+
+#content-div {
+    padding-left: 200px;
+    float: left;
+}
+
+nav {
+    height: auto;
+    list-style: none;
+}
