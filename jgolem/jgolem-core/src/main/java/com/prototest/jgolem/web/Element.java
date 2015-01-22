@@ -1,9 +1,5 @@
 package com.prototest.jgolem.web;
 
-import com.google.inject.Inject;
-import com.google.inject.Injector;
-import com.prototest.jgolem.core.AutoInjection;
-import com.prototest.jgolem.core.Verification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -14,13 +10,11 @@ import java.util.List;
 
 //Element class can be instantiated any time but only looks for the element on the page when a function is called
 public class Element extends WebAutoInjection implements WebElement {
-
     private By by;
     private String name;
     private WebElement element;
 
     private Logger logger = LogManager.getLogger(getClass());
-    //public Verification Verify;
 
     public Element(String name, By by) {
         this.name = name;
@@ -29,12 +23,12 @@ public class Element extends WebAutoInjection implements WebElement {
         //this.driver = TestBase.getDriver();
     }
 
-    public Verification verify() {
+    public ElementValidation verify() {
         return verify(10);
     }
 
-    public Verification verify(int timeoutSec) {
-        return new Verification(this, timeoutSec);
+    public ElementValidation verify(int timeoutSec) {
+        return new ElementValidation(this, timeoutSec);
     }
 
     public By getBy() {
@@ -60,6 +54,8 @@ public class Element extends WebAutoInjection implements WebElement {
     public String getText() {
         return getElement().getText();
     }
+
+    public String getValue() {return getElement().getAttribute("value");}
 
     public String getAttribute(String attribute) {
         try {
